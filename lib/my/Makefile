@@ -18,6 +18,10 @@ SRC 		=   my_math/my_compute_power_rec.c \
 				my_math/my_putnbr_base.c \
 				my_math/my_putnbr_base_unsigned.c \
 				my_math/my_putfloat.c \
+				my_math/get_nb_size.c \
+				my_math/get_nb_size_unsigned.c \
+				my_math/my_put_nbr.c \
+				my_math/my_put_nbr_unsigned.c \
 				\
 				my_stdlib/my_bzero.c \
 				my_stdlib/my_calloc.c \
@@ -34,7 +38,6 @@ SRC 		=   my_math/my_compute_power_rec.c \
 				my_stdio/my_putstr_err.c \
 				my_stdio/my_putchar.c \
 				my_stdio/my_putstr.c \
-				my_stdio/my_put_nbr.c \
 				\
 				my_str/concat_params.c \
 				my_str/is_capital_letter.c \
@@ -60,7 +63,6 @@ SRC 		=   my_math/my_compute_power_rec.c \
 				my_str/my_word_count.c \
 				my_str/print_char_in_hex.c \
 				my_str/print_char_in_oct.c \
-				my_str/get_nb_size.c \
 				\
 				print_formatter/my_printf.c \
 				print_formatter/vn_redirect/my_vn_putbin.c \
@@ -74,7 +76,19 @@ SRC 		=   my_math/my_compute_power_rec.c \
 				print_formatter/vn_redirect/my_vn_putpointer.c \
 				print_formatter/vn_redirect/my_vn_get_send_to_stdio.c \
 				print_formatter/vn_redirect/my_vn_putnbr_unsigned.c \
-				print_formatter/vn_redirect/my_vn_putfloat_precision_6.c
+				print_formatter/vn_redirect/my_vn_putfloat_precision_6.c \
+				print_formatter/vn_redirect/my_vn_puthex_higher_long.c \
+				print_formatter/vn_redirect/my_vn_puthex_lower_long.c \
+				print_formatter/vn_redirect/my_vn_putnbr_unsigned_long.c \
+				print_formatter/vn_redirect/my_vn_putoctal_long.c \
+				print_formatter/vn_redirect/my_vn_putnbr_long.c \
+				print_formatter/vn_redirect/my_vn_puthex_higher_long_long.c \
+				print_formatter/vn_redirect/my_vn_puthex_lower_long_long.c \
+				print_formatter/vn_redirect/my_vn_putnbr_unsigned_long_long.c \
+				print_formatter/vn_redirect/my_vn_putoctal_long_long.c \
+				print_formatter/vn_redirect/my_vn_putnbr_long_long.c
+
+
 
 OBJ 		=	$(SRC:.c=.o)
 
