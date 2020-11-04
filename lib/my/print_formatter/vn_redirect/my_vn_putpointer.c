@@ -5,11 +5,12 @@
 ** my_putpointer
 */
 
-#include <my_stdlib.h>
 #include <my_stdio.h>
 
-int my_vn_putpointer(void *data)
+void my_putpointer(long nb);
+
+int my_vn_putpointer(va_list *arg)
 {
-    my_putpointer((long)data);
+    my_putpointer(va_arg(*arg, long));
     return (14);
 }

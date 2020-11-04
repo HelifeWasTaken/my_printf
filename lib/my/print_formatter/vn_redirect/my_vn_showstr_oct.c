@@ -9,10 +9,10 @@
 #include <my_stdio.h>
 #include <my_str.h>
 
-int my_vn_showstr_oct(void *data)
+int my_vn_showstr_oct(va_list *arg)
 {
     size_t i;
-    char *new_data = (char *)data;
+    char *new_data = va_arg(*arg, char *);
 
     if (!new_data)
         return (0);

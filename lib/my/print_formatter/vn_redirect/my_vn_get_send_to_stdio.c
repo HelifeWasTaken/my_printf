@@ -5,9 +5,11 @@
 ** transferring_value_for_percentage_n_flag
 */
 
-int my_vn_get_send_to_stdio(void *data, int count_char)
+#include <stdarg.h>
+
+int my_vn_get_send_to_stdio(va_list *arg, int count_char)
 {
-    int *new_data = (int *)data;
+    int *new_data = va_arg(*arg, int *);
 
     *new_data = count_char;
     return (0);

@@ -6,11 +6,14 @@
 */
 
 #include <my_str.h>
+#include <stdarg.h>
 
 void my_putstr(char const *str);
 
-int my_vn_putstr(void *data)
+int my_vn_putstr(va_list *arg)
 {
-    my_putstr(data);
-    return (my_strlen(data));
+    char *new_data = va_arg(*arg, char *);
+
+    my_putstr(new_data);
+    return (my_strlen(new_data));
 }

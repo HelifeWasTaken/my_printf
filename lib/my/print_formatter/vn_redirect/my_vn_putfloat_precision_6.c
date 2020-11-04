@@ -5,16 +5,17 @@
 ** Printing numbers
 */
 
-#include <stdbool.h>
+#include <stdarg.h>
 #include <unistd.h>
 
-void my_putfloat(float nb, int precision);
+void my_putfloat(double nb, int precision);
 
-int get_nb_size(double nb);
+int get_nb_size(long long nb, int base);
 
-int my_vn_putfloat_precision_6(void *data)
+int my_vn_putfloat_precision_6(va_list *arg)
 {
-    float *new_data = (float *)data;
-    my_putfloat(*new_data, 6);
-    return (7 + get_nb_size(((long)data)));
+    double new_data = va_arg(*arg, double);
+
+    my_putfloat((float)new_data, 6);
+    return (7 + get_nb_size((long long)new_data, 10));
 }

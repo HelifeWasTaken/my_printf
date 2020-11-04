@@ -6,9 +6,10 @@
 */
 
 #include <unistd.h>
+#include <stdarg.h>
 
-int my_vn_putchar(void *data)
+int my_vn_putchar(va_list *arg)
 {
-    write(1, (char *)&data, 1);
+    write(1, va_arg(*arg, char *), 1);
     return (1);
 }

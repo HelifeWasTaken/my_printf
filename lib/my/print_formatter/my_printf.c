@@ -55,9 +55,52 @@
 **    Knowing that I could not do arithmetic with a void *
 **    I just casted to an integer that had the size of a void *
 **
+**    // Deprecated
+**
+**    But now nothing is passed as void * anymore as my vn_function get the
+**    va_list argument directly and are casted with va_arg
+**    which seems much more safe
+**    Because of casting from void * to float had some weird bit level hacking
+**
+**    That looked like :
+**
+**    int my_vn_putfloat(void *data)
+**    {
+**       void *data = 5678.878;
+**       float *new_data = *(float *)&data;
+**       evil floating point bit level hacking
+**
+**       my_putfloat(*new_data);
+**       return (get_nb_size((double)*new_data, 10) + 7);
+**    }
+**
+**    And I was scared of undefined behaviour with this kind that was tho legit
+**    And still worked perfectly for the little time that I used it
+**
+**    so now the structure looks like this :
+**    typedef struct my_printf_struct {
+**        char *flag;
+**        int (*flag_function)(va_list *arg);
+**    } my_printf_flags;
+**
+**    And the function looks like that now :
+**
+**    int my_vn_putfloat(va_list *arg)
+**    {
+**        double new_data = va_arg(*arg, double);
+**
+**        my_putfloat((float)new_data, 6);
+**        return (7 + get_nb_size(new_data));
+**    }
+**
+**    As you can see this version seems more portable than the casting to float *
+**
+**    For the vn_stuff name I kept it as va_arg is still a linked list
+**    of void * and I do the cast in the other functions
+**
 */
 
-static const my_printf_flags array_flags[14] = {
+static const my_printf_flags array_flags[27] = {
     { "s", &my_vn_putstr },
     { "d", &my_vn_putnbr },
     { "i", &my_vn_putnbr },
@@ -69,10 +112,21 @@ static const my_printf_flags array_flags[14] = {
     { "S", &my_vn_showstr_oct },
     { "u", &my_vn_putnbr_unsigned },
     { "p", &my_vn_putpointer },
-    //  { "e", &my_vn_putexp_lower },
-    //  { "E", &my_vn_putexp_higher },
     { "f", &my_vn_putfloat_precision_6 },
+    { "F", &my_vn_putfloat_precision_6 },
     { "n", 0 },
+    { "ld", &my_vn_putnbr_long },
+    { "li", &my_vn_putnbr_long },
+    { "lo", &my_vn_putoctal_long },
+    { "lu", &my_vn_putnbr_unsigned_long },
+    { "lx", &my_vn_puthex_lower_long },
+    { "lX", &my_vn_puthex_higher_long },
+    { "lld", &my_vn_putnbr_long_long },
+    { "lli", &my_vn_putnbr_long_long },
+    { "llo", &my_vn_putoctal_long_long },
+    { "llu", &my_vn_putnbr_unsigned_long_long },
+    { "llx", &my_vn_puthex_lower_long_long },
+    { "llX", &my_vn_puthex_higher_long_long },
     { NULL, 0 },
 };
 
@@ -168,13 +222,19 @@ static int remove_trailing_spaces(char const **str)
 ** Otherwise if the flag was not recognizable it is simply going into
 ** (*flag_func)(void *data); and doing the display with the given argument
 **
+** // Deprecated
+**
+** Now the flag function is no more getting a void * but
+** the complete va_list linked list
+** It simply send the list to avoir UB and cast with va_arg directly
+**
 */
 
-static int my_printf_parser(char const **str, void *data, int count_char)
+static int my_printf_parser(char const **str, va_list *arg, int count_char)
 {
     char *temp_flag = NULL;
     char *last_flag = NULL;
-    int (*flag_func)(void *data);
+    int (*flag_func)(va_list *arg);
     int found_space = remove_trailing_spaces(str);
 
     for (int i = 0; array_flags[i].flag != NULL; i++) {
@@ -187,9 +247,9 @@ static int my_printf_parser(char const **str, void *data, int count_char)
     }
     if (last_flag != NULL) {
         if (*last_flag == 'n')
-            return (my_vn_get_send_to_stdio(data, count_char));
+            return (my_vn_get_send_to_stdio(arg, count_char));
         (*str) += my_strlen(last_flag);
-        return (flag_func(data));
+        return (flag_func(arg));
     }
     else
         return (process_exception(str, found_space));
@@ -203,7 +263,11 @@ static int my_printf_parser(char const **str, void *data, int count_char)
 ** it in a very primitive algorithm
 **
 ** It looks at the first one if it's a percentage and the second is not
-** send it to the my_printf parser
+** send the argument to the my_printf parser
+**
+** Edit :
+** It does no send the argument anymore directly but send the list of arguments
+**
 **
 ** If both *str and str[1] are a percentage it prints a percentage
 ** then process
@@ -218,10 +282,12 @@ int my_printf(char const *str, ...)
     va_list arg;
     va_start(arg, str);
 
+    if (!str)
+        return (0);
     while (*str) {
         if (*str == '%' && str[1] != '%') {
             str++;
-            count += my_printf_parser(&str, va_arg(arg, void *), count);
+            count += my_printf_parser(&str, &arg, count);
         } else if (*str == '%' && str[1] == '%') {
             my_putstr("%");
             str += 2;

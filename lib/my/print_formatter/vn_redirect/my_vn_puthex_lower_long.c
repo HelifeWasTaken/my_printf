@@ -12,10 +12,10 @@ void my_putnbr_base(long long nb, int base, bool uppercase);
 
 int get_nb_size(long long nb, int base);
 
-int my_vn_puthex_higher(va_list *arg)
+int my_vn_puthex_lower_long(va_list *arg)
 {
-    int new_data = va_arg(*arg, int);
+    long new_data = va_arg(*arg, long);
 
-    my_putnbr_base(new_data, 16, 1);
+    my_putnbr_base(new_data, 16, 0);
     return (get_nb_size(new_data, 16));
 }
