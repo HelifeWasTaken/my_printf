@@ -3,4 +3,5 @@
 *.gc*
 .vscode
 main.c
+main2.c
 *.out

@@ -10,7 +10,7 @@
 
 static void process_number(unsigned long nb, int precision)
 {
-   if (nb >= 10) {
+    if (nb >= 10) {
         process_number(nb / 10, precision - 1);
         my_putchar((nb % 10) + '0');
     } else

@@ -15,7 +15,7 @@
 
 /*
 **
-**    This simply a global structure containing every flags
+**    This is simply a global structure containing every flags
 **    that I need to procces my parsing
 **
 **    structure looks like this :
@@ -41,6 +41,7 @@
 **    casted automatically to a char * and so can be dereferenced
 **
 **    But :
+**
 **    int my_vn_putnbr(void *data)
 **    {
 **        long new_data = (long)data;   Need to be casted !
@@ -93,14 +94,15 @@
 **        return (7 + get_nb_size(new_data));
 **    }
 **
-**    As you can see this version seems more portable than the casting to float *
+**    As you can see this version seems more portable
+**    than the casting to float * with weird bit level hacking
 **
 **    For the vn_stuff name I kept it as va_arg is still a linked list
 **    of void * and I do the cast in the other functions
 **
 */
 
-static const my_printf_flags array_flags[39] = {
+static const my_printf_flags array_flags[45] = {
     { "s", &my_vn_putstr },
     { "d", &my_vn_putnbr },
     { "i", &my_vn_putnbr },
@@ -127,6 +129,12 @@ static const my_printf_flags array_flags[39] = {
     { "llu", &my_vn_putnbr_unsigned_long_long },
     { "llx", &my_vn_puthex_lower_long_long },
     { "llX", &my_vn_puthex_higher_long_long },
+    { "qd", &my_vn_putnbr_long_long },
+    { "qi", &my_vn_putnbr_long_long },
+    { "qo", &my_vn_putoctal_long_long },
+    { "qu", &my_vn_putnbr_unsigned_long_long },
+    { "qx", &my_vn_puthex_lower_long_long },
+    { "qX", &my_vn_puthex_higher_long_long },
     { "hhd", &my_vn_cast_int_to_unsigned_char },
     { "hhi", &my_vn_cast_int_to_unsigned_char },
     { "hho", &my_vn_cast_oct_to_unsigned_char },
@@ -169,24 +177,24 @@ static const my_printf_flags array_flags[39] = {
 /*
 **
 **  Old version deprecated
-**  I made this but then understood soon enough that printf padding was
+**  I made this but then understood soon enough that my_printf padding was
 **  much much simpler than I thought
 **
 **  static int process_exception(char const **str, int found_space)
 **  {
-**  if (!(**str))
-**      return (0);
-**  if (!found_space && is_char_alphanum(**str)) {
-**      my_putchar('%');
-**      my_putchar(**str++);
-**      return (2);
-**  } else {
-**      for (int i = 0; i < found_space; i++)
-**          my_putchar(' ');
-**      my_putchar(**str++);
-**      return (found_space + 1);
+**      if (!(**str))
+**          return (0);
+**      if (!found_space && is_char_alphanum(**str)) {
+**          my_putchar('%');
+**          my_putchar(**str++);
+**          return (2);
+**      } else {
+**          for (int i = 0; i < found_space; i++)
+**              my_putchar(' ');
+**          my_putchar(**str++);
+**          return (found_space + 1);
+**      }
 **  }
-**}
 **
 **
 */
@@ -211,6 +219,7 @@ static int process_exception(char const **str, int found_space)
 **  int main(void)
 **  {
 **      char *str = "Hello world";
+**
 **      my_printf("%    s\n", str);
 **      return (0);
 **  }

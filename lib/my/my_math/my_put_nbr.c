@@ -9,7 +9,7 @@ void my_putchar(const char c);
 
 static void process_number(long long nb)
 {
-   if (nb >= 10) {
+    if (nb >= 10) {
         process_number(nb / 10);
         my_putchar((nb % 10) + '0');
     } else
