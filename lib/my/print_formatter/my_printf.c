@@ -100,7 +100,7 @@
 **
 */
 
-static const my_printf_flags array_flags[33] = {
+static const my_printf_flags array_flags[39] = {
     { "s", &my_vn_putstr },
     { "d", &my_vn_putnbr },
     { "i", &my_vn_putnbr },
@@ -127,13 +127,18 @@ static const my_printf_flags array_flags[33] = {
     { "llu", &my_vn_putnbr_unsigned_long_long },
     { "llx", &my_vn_puthex_lower_long_long },
     { "llX", &my_vn_puthex_higher_long_long },
-    { "hhd", &my_vn_cast_int_to_signed_char },
-    { "hhi", &my_vn_cast_int_to_signed_char },
-    { "hho", &my_vn_cast_oct_to_signed_char },
-    { "hhu", &my_vn_cast_unsigned_to_signed_char },
-
-    { "hhx", &my_vn_cast_hex_low_to_signed_char },
-    { "hhX", &my_vn_cast_hex_high_to_signed_char },
+    { "hhd", &my_vn_cast_int_to_unsigned_char },
+    { "hhi", &my_vn_cast_int_to_unsigned_char },
+    { "hho", &my_vn_cast_oct_to_unsigned_char },
+    { "hhu", &my_vn_cast_unsigned_to_unsigned_char },
+    { "hhx", &my_vn_cast_hex_low_to_unsigned_char },
+    { "hhX", &my_vn_cast_hex_high_to_unsigned_char },
+    { "hd", &my_vn_cast_int_to_short_int },
+    { "hi", &my_vn_cast_int_to_short_int },
+    { "ho", &my_vn_cast_oct_to_short_int },
+    { "hu", &my_vn_cast_unsigned_to_short_int },
+    { "hx", &my_vn_cast_hex_low_to_short_int },
+    { "hX", &my_vn_cast_hex_high_to_short_int },
     { NULL, 0 },
 };
 
@@ -161,20 +166,40 @@ static const my_printf_flags array_flags[33] = {
 **
 */
 
+/*
+**
+**  Old version deprecated
+**  I made this but then understood soon enough that printf padding was
+**  much much simpler than I thought
+**
+**  static int process_exception(char const **str, int found_space)
+**  {
+**  if (!(**str))
+**      return (0);
+**  if (!found_space && is_char_alphanum(**str)) {
+**      my_putchar('%');
+**      my_putchar(**str++);
+**      return (2);
+**  } else {
+**      for (int i = 0; i < found_space; i++)
+**          my_putchar(' ');
+**      my_putchar(**str++);
+**      return (found_space + 1);
+**  }
+**}
+**
+**
+*/
+
 static int process_exception(char const **str, int found_space)
 {
-    if (!(**str))
-        return (0);
-    if (!found_space && is_char_alphanum(**str)) {
-        my_putchar('%');
-        my_putchar(**str++);
+    (*str)++;
+    if (found_space) {
+        my_putstr("% ");
         return (2);
-    } else {
-        for (int i = 0; i < found_space; i++)
-            my_putchar(' ');
-        my_putchar(**str++);
-        return (found_space + 1);
     }
+    my_putchar('%');
+    return (0);
 }
 
 /*
@@ -198,9 +223,10 @@ static int remove_trailing_spaces(char const **str)
 {
     int count = 0;
 
-    if (**str != ' ')
+    if (**str != ' ') {
         return (0);
-    while (**str && **str != ' ') {
+    }
+    while (**str && **str == ' ') {
         count++;
         (*str)++;
     }

@@ -32,11 +32,16 @@ int my_vn_putoctal_long_long(va_list *arg);
 int my_vn_putnbr_unsigned_long_long(va_list *arg);
 int my_vn_puthex_lower_long_long(va_list *arg);
 int my_vn_puthex_higher_long_long(va_list *arg);
-int my_vn_cast_int_to_signed_char(va_list *arg);
-int my_vn_cast_oct_to_signed_char(va_list *arg);
-int my_vn_cast_unsigned_to_signed_char(va_list *arg);
-int my_vn_cast_hex_low_to_signed_char(va_list *arg);
-int my_vn_cast_hex_high_to_signed_char(va_list *arg);
+int my_vn_cast_int_to_unsigned_char(va_list *arg);
+int my_vn_cast_oct_to_unsigned_char(va_list *arg);
+int my_vn_cast_unsigned_to_unsigned_char(va_list *arg);
+int my_vn_cast_hex_low_to_unsigned_char(va_list *arg);
+int my_vn_cast_hex_high_to_unsigned_char(va_list *arg);
+int my_vn_cast_int_to_short_int(va_list *arg);
+int my_vn_cast_oct_to_short_int(va_list *arg);
+int my_vn_cast_unsigned_to_short_int(va_list *arg);
+int my_vn_cast_hex_low_to_short_int(va_list *arg);
+int my_vn_cast_hex_high_to_short_int(va_list *arg);
 
 typedef struct my_printf_struct {
     char *flag;
