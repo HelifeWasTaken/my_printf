@@ -5,7 +5,9 @@
 ** get_a_number_asize
 */
 
-int get_nb_size(long nb, int base)
+#include <my_stdio.h>
+
+int get_nb_size(long long nb, int base)
 {
     int count = 0;
 

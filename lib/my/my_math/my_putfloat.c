@@ -8,18 +8,18 @@
 #include <my_stdio.h>
 #include <stdbool.h>
 
-static void process_number(long long nb, int precision)
+static void process_number(unsigned long nb, int precision)
 {
    if (nb >= 10) {
         process_number(nb / 10, precision - 1);
-       my_putchar((nb % 10) + '0');
+        my_putchar((nb % 10) + '0');
     } else
         my_putchar((nb % 10) + '0');
     if (precision == 0)
         my_putchar('.');
 }
 
-void my_putfloat(float nb, int precision)
+void my_putfloat(double nb, int precision)
 {
     if (nb < 0) {
         nb = -nb;
@@ -27,5 +27,5 @@ void my_putfloat(float nb, int precision)
     }
     for (int i = 0; i < precision; i++)
         nb *= 10;
-    process_number((long long)nb, precision);
+    process_number((unsigned long)nb, precision);
 }
