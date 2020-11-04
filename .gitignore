@@ -2,4 +2,5 @@
 *.a
 *.gc*
 .vscode
-
+main.c
+*.out

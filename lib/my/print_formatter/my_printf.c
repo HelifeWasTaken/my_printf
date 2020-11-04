@@ -100,7 +100,7 @@
 **
 */
 
-static const my_printf_flags array_flags[27] = {
+static const my_printf_flags array_flags[33] = {
     { "s", &my_vn_putstr },
     { "d", &my_vn_putnbr },
     { "i", &my_vn_putnbr },
@@ -127,6 +127,13 @@ static const my_printf_flags array_flags[27] = {
     { "llu", &my_vn_putnbr_unsigned_long_long },
     { "llx", &my_vn_puthex_lower_long_long },
     { "llX", &my_vn_puthex_higher_long_long },
+    { "hhd", &my_vn_cast_int_to_signed_char },
+    { "hhi", &my_vn_cast_int_to_signed_char },
+    { "hho", &my_vn_cast_oct_to_signed_char },
+    { "hhu", &my_vn_cast_unsigned_to_signed_char },
+
+    { "hhx", &my_vn_cast_hex_low_to_signed_char },
+    { "hhX", &my_vn_cast_hex_high_to_signed_char },
     { NULL, 0 },
 };
 
