@@ -12,7 +12,7 @@
 ** if you want to see the output
 */
 
-Test(test_printf_scilence, check_that_it_does_not_segfault, cr_stdout)
+Test(test_printf_scilence, check_that_it_does_not_segfault)//, cr_stdout)
 {
     char *str = "Hello";
     int a = 0;
@@ -64,4 +64,68 @@ Test(test_printf_scilence, check_that_it_does_not_segfault, cr_stdout)
 
     printf("%ld\n", 999999999999);
     my_printf("%ld\n", 999999999999);
+
+    my_printf("%lld\n", (unsigned long long)999999999999);
+    printf("%lld\n", (unsigned long long)999999999999);
+
+    my_printf("%llu\n", (unsigned long long)999999999999);
+    printf("%llu\n", (unsigned long long)999999999999);
+
+    my_printf("%llx\n", (unsigned long long)999999999999);
+    printf("%llx\n", (unsigned long long)999999999999);
+
+    my_printf("%llX\n", (unsigned long long)999999999999);
+    printf("%llX\n", (unsigned long long)999999999999);
+
+    printf("q output\n");
+
+    my_printf("%qd\n", (unsigned long long)999999999999);
+    printf("%lld\n", (unsigned long long)999999999999);
+
+    my_printf("%qu\n", (unsigned long long)999999999999);
+    printf("%llu\n", (unsigned long long)999999999999);
+
+    my_printf("%qx\n",  (unsigned long long)999999999999);
+    printf("%llx\n",  (unsigned long long)999999999999);
+
+    my_printf("%qX\n",  (unsigned long long)999999999999);
+    printf("%llX\n",  (unsigned long long)999999999999);
+
+    my_printf("%hhd\n", 9999999);
+    printf("%hhd\n",  9999999);
+
+    my_printf("%hhi\n",  9999999);
+    printf("%hhi\n",  9999999);
+
+    my_printf("%hho\n",  9999999);
+    printf("%hho\n",  9999999);
+
+    my_printf("%hhu\n",  9999999);
+    printf("%hhu\n",  9999999);
+
+    my_printf("%hhx\n",  9999999);
+    printf("%hhx\n",  9999999);
+
+    my_printf("%hhX\n",  9999999);
+    printf("%hhX\n",  9999999);
+
+    my_printf("%hd\n", 9999999);
+    printf("%hd\n",  9999999);
+
+    my_printf("%hi\n",  9999999);
+    printf("%hi\n",  9999999);
+
+    my_putstr("hello\n");
+    my_printf("%ho\n",  9999999);
+    printf("%ho\n",  9999999);
+    my_putstr("hello\n");
+
+    my_printf("%hu\n",  9999999);
+    printf("%hu\n",  999999);
+
+    my_printf("%hx\n",  9999999);
+    printf("%hx\n",  9999999);
+
+    my_printf("%hX\n",  9999999);
+    printf("%hX\n",  9999999);
 }
