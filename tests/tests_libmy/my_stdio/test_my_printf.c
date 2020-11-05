@@ -115,13 +115,13 @@ Test(test_printf_scilence, check_that_it_does_not_segfault)//, cr_stdout)
     my_printf("%hi\n",  9999999);
     printf("%hi\n",  9999999);
 
-    my_putstr("hello\n");
     my_printf("%ho\n",  9999999);
     printf("%ho\n",  9999999);
-    my_putstr("hello\n");
 
+    my_putstr("hello\n");
     my_printf("%hu\n",  9999999);
     printf("%hu\n",  999999);
+    my_putstr("hello\n");
 
     my_printf("%hx\n",  9999999);
     printf("%hx\n",  9999999);

@@ -98,11 +98,11 @@ SRC_TEST	=   $(PATH_LIB)/my_math/my_compute_power_rec.c \
 				$(PATH_LIB)/$(PATH_VNL)/my_vn_cast_int_to_unsigned_char.c \
 				$(PATH_LIB)/$(PATH_VNL)/my_vn_cast_oct_to_unsigned_char.c \
 				$(PATH_LIB)/$(PATH_VNL)/my_vn_cast_unsigned_to_unsigned_char.c \
-				$(PATH_LIB)/$(PATH_VNL)/my_vn_cast_int_to_short_int.c \
-				$(PATH_LIB)/$(PATH_VNL)/my_vn_cast_unsigned_to_short_int.c \
-				$(PATH_LIB)/$(PATH_VNL)/my_vn_cast_hex_low_to_short_int.c \
-				$(PATH_LIB)/$(PATH_VNL)/my_vn_cast_hex_high_to_short_int.c \
-				$(PATH_LIB)/$(PATH_VNL)/my_vn_cast_oct_to_short_int.c\
+				$(PATH_LIB)/$(PATH_VNL)/my_vn_cast_int_to_unsigned_short_int.c \
+				$(PATH_LIB)/$(PATH_VNL)/my_vn_cast_unsigned_to_unsigned_short_int.c \
+				$(PATH_LIB)/$(PATH_VNL)/my_vn_cast_hex_low_to_unsigned_short_int.c \
+				$(PATH_LIB)/$(PATH_VNL)/my_vn_cast_hex_high_to_unsigned_short_int.c \
+				$(PATH_LIB)/$(PATH_VNL)/my_vn_cast_oct_to_unsigned_short_int.c\
 				\
 				$(PATH_T_MY)/my_math/test_get_nb_size.c \
 				$(PATH_T_MY)/my_math/test_my_compute_power_rec.c \

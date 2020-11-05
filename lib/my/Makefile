@@ -92,11 +92,11 @@ SRC 		=   my_math/my_compute_power_rec.c \
 				print_formatter/vn_redirect/my_vn_cast_int_to_unsigned_char.c \
 				print_formatter/vn_redirect/my_vn_cast_oct_to_unsigned_char.c \
 				print_formatter/vn_redirect/my_vn_cast_unsigned_to_unsigned_char.c \
-				print_formatter/vn_redirect/my_vn_cast_int_to_short_int.c \
-				print_formatter/vn_redirect/my_vn_cast_unsigned_to_short_int.c \
-				print_formatter/vn_redirect/my_vn_cast_hex_low_to_short_int.c \
-				print_formatter/vn_redirect/my_vn_cast_hex_high_to_short_int.c \
-				print_formatter/vn_redirect/my_vn_cast_oct_to_short_int.c
+				print_formatter/vn_redirect/my_vn_cast_int_to_unsigned_short_int.c \
+				print_formatter/vn_redirect/my_vn_cast_unsigned_to_unsigned_short_int.c \
+				print_formatter/vn_redirect/my_vn_cast_hex_low_to_unsigned_short_int.c \
+				print_formatter/vn_redirect/my_vn_cast_hex_high_to_unsigned_short_int.c \
+				print_formatter/vn_redirect/my_vn_cast_oct_to_unsigned_short_int.c
 
 
 OBJ 		=	$(SRC:.c=.o)

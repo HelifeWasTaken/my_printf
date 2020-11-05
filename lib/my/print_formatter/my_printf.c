@@ -142,12 +142,12 @@ static const my_printf_flags_t array_flags[45] = {
     { "hhu", &my_vn_cast_unsigned_to_unsigned_char },
     { "hhx", &my_vn_cast_hex_low_to_unsigned_char },
     { "hhX", &my_vn_cast_hex_high_to_unsigned_char },
-    { "hd", &my_vn_cast_int_to_short_int },
-    { "hi", &my_vn_cast_int_to_short_int },
-    { "ho", &my_vn_cast_oct_to_short_int },
-    { "hu", &my_vn_cast_unsigned_to_short_int },
-    { "hx", &my_vn_cast_hex_low_to_short_int },
-    { "hX", &my_vn_cast_hex_high_to_short_int },
+    { "hd", &my_vn_cast_int_to_unsigned_short_int },
+    { "hi", &my_vn_cast_int_to_unsigned_short_int },
+    { "ho", &my_vn_cast_oct_to_unsigned_short_int },
+    { "hu", &my_vn_cast_unsigned_to_unsigned_short_int },
+    { "hx", &my_vn_cast_hex_low_to_unsigned_short_int },
+    { "hX", &my_vn_cast_hex_high_to_unsigned_short_int },
     { NULL, 0 },
 };
 

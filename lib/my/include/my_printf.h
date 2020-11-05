@@ -37,11 +37,11 @@ int my_vn_cast_oct_to_unsigned_char(va_list *arg);
 int my_vn_cast_unsigned_to_unsigned_char(va_list *arg);
 int my_vn_cast_hex_low_to_unsigned_char(va_list *arg);
 int my_vn_cast_hex_high_to_unsigned_char(va_list *arg);
-int my_vn_cast_int_to_short_int(va_list *arg);
-int my_vn_cast_oct_to_short_int(va_list *arg);
-int my_vn_cast_unsigned_to_short_int(va_list *arg);
-int my_vn_cast_hex_low_to_short_int(va_list *arg);
-int my_vn_cast_hex_high_to_short_int(va_list *arg);
+int my_vn_cast_int_to_unsigned_short_int(va_list *arg);
+int my_vn_cast_oct_to_unsigned_short_int(va_list *arg);
+int my_vn_cast_unsigned_to_unsigned_short_int(va_list *arg);
+int my_vn_cast_hex_low_to_unsigned_short_int(va_list *arg);
+int my_vn_cast_hex_high_to_unsigned_short_int(va_list *arg);
 
 typedef struct my_printf_struct {
     char *flag;

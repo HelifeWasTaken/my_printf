@@ -19,8 +19,8 @@
 #include <stdarg.h>
 #include <signal.h>
 #include <limits.h>
-#define cr_stdout .init=cr_redirect_stdout
-#define cr_stderr .init=cr_redirect_stderr
+#define cr_stdout .init = cr_redirect_stdout
+#define cr_stderr .init = cr_redirect_stderr
 #define cr_redirect_all \
     cr_redirect_stdout(); \
     cr_redirect_stderr();
