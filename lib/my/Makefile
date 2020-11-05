@@ -109,9 +109,10 @@ $(NAME): build_lib
 
 build_lib: 	$(OBJ)
 	$(AR) $(NAME) $(OBJ)
+	cp $(NAME) ../
+	cp $(NAME) ../../
 
 copy:
-	cp $(NAME) ../
 	mkdir -p ../../include
 	cp include/*.h ../../include
 
