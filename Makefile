@@ -161,7 +161,6 @@ tests_run: clean ## Cleans the project and run the unit tests
 	make copy -C ./lib/my
 	$(CC) $(SRC_TEST) $(CFLAGS) $(TEST_FLAGS) -o $(UNIT_TEST_EXEC)
 	./$(UNIT_TEST_EXEC)
-	gcovr -e tests -b
 
 usage: ## Print the usage
 	@grep -h "##" Makefile | sed -e 's/\(\:.*\#\#\)/\:\ /' | grep -v grep | sed -e 's/\\$$//' | sed -e 's/##//'
