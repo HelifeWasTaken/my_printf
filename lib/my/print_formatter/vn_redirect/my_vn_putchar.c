@@ -10,6 +10,8 @@
 
 int my_vn_putchar(va_list *arg)
 {
-    write(1, va_arg(*arg, char *), 1);
+    int new_data = va_arg(*arg, int);
+
+    write(1, &new_data, 1);
     return (1);
 }
