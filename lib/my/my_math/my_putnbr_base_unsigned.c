@@ -23,7 +23,7 @@ void my_putnbr_base_unsigned(unsigned int nb, int base_size, bool uppercase)
     char const base_lower[36] = "0123456789abcdefghijklmnopqrstuvwxyz";
 
     if (base_size < 2 || base_size > 36) {
-        my_putstr_err("You must have base size beetween 2 and 36");
+        my_putstr_err("You must have a base size between 2 and 36\n");
         return;
     }
     if (uppercase)

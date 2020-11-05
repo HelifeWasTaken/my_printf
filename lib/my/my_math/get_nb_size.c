@@ -7,17 +7,17 @@
 
 #include <my_stdio.h>
 
-int get_nb_size(long long nb, int base)
+int get_nb_size(long long int nb, int base)
 {
-    int count = 0;
+    int count = 1;
 
     if (nb < 0) {
         nb = -nb;
         count++;
     }
-    do {
+    while (nb >= base) {
         nb /= base;
         count++;
-    } while (nb > base);
+    }
     return (count);
 }

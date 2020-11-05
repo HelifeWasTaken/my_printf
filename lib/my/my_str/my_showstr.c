@@ -17,10 +17,8 @@ void print_char_in_hex(unsigned char c);
 
 void my_showstr(char const *str)
 {
-    if (!str)
-        return;
     for (size_t i = 0; str[i]; i++) {
-        if (!(str[i] >= 32 && str[i] <= 126))
+        if (!(str[i] >= 32) && str[i] <= 126)
             print_char_in_hex(str[i]);
         else
             my_putchar(str[i]);

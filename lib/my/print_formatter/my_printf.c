@@ -10,6 +10,7 @@
 #include <my_printf.h>
 #include <stdlib.h>
 #include <my_stdio.h>
+#include <my_math.h>
 #include <my_str.h>
 #include <stdio.h>
 
@@ -102,7 +103,7 @@
 **
 */
 
-static const my_printf_flags array_flags[45] = {
+static const my_printf_flags_t array_flags[45] = {
     { "s", &my_vn_putstr },
     { "d", &my_vn_putnbr },
     { "i", &my_vn_putnbr },
@@ -288,9 +289,9 @@ static int my_printf_parser(char const **str, va_list *arg, int count_char)
         }
     }
     if (last_flag != NULL) {
+        (*str) += my_strlen(last_flag);
         if (*last_flag == 'n')
             return (my_vn_get_send_to_stdio(arg, count_char));
-        (*str) += my_strlen(last_flag);
         return (flag_func(arg));
     }
     else

@@ -9,11 +9,11 @@
 
 int get_nb_size_unsigned(unsigned long long nb, int base)
 {
-    int count = 0;
+    int count = 1;
 
-    do {
+    while (nb > (unsigned int)base) {
         nb /= base;
         count++;
-    } while (nb > (unsigned int)base);
+    }
     return (count);
 }

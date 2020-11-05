@@ -14,6 +14,8 @@ char *my_strncat(char *dest, char const *src, size_t nb)
     size_t i = 0;
     size_t len_of_src = my_strlen(dest);
 
+    if (!len_of_src)
+        return (dest);
     while (src[i] && i < nb) {
         dest[i + len_of_src] = src[i];
         i++;

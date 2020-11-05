@@ -46,5 +46,5 @@ int my_vn_cast_hex_high_to_short_int(va_list *arg);
 typedef struct my_printf_struct {
     char *flag;
     int (*flag_function)(va_list *arg);
-} my_printf_flags;
+} my_printf_flags_t;
 #endif

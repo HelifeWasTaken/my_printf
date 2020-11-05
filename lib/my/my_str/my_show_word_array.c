@@ -13,8 +13,6 @@ void my_putstr(char const *str);
 
 void my_show_word_array(char *const *tab)
 {
-    if (!tab)
-        return;
     for (size_t i = 0; tab[i]; i++) {
         my_putstr(tab[i]);
         my_putchar('\n');

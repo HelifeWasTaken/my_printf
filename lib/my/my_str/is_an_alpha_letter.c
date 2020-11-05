@@ -13,5 +13,5 @@ bool is_lowercase_letter(char const c);
 
 bool is_an_alpha_letter(char const c)
 {
-    return (is_capital_letter(c) && is_lowercase_letter(c));
+    return (is_capital_letter(c) || is_lowercase_letter(c));
 }
