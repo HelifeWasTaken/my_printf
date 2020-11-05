@@ -8,9 +8,10 @@
 #include <stdbool.h>
 #include <stdarg.h>
 
-void my_put_nbr_unsigned(unsigned long long nb, int base, bool uppercase);
+void my_put_nbr_unsigned(unsigned long long nb, unsigned int base,
+        bool uppercase);
 
-int get_nb_size(unsigned long long nb, int base);
+int get_nb_size(unsigned long long nb, unsigned int base);
 
 int my_vn_putnbr_unsigned(va_list *arg)
 {

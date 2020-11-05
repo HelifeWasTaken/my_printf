@@ -7,11 +7,11 @@
 
 #include <my_stdio.h>
 
-int get_nb_size_unsigned(unsigned long long nb, int base)
+int get_nb_size_unsigned(unsigned long long nb, unsigned int base)
 {
     int count = 1;
 
-    while (nb > (unsigned int)base) {
+    while (nb > base) {
         nb /= base;
         count++;
     }

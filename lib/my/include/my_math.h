@@ -15,8 +15,9 @@ bool my_is_prime(int nb);
 void my_put_nbr(long long nb);
 void my_put_nbr_unsigned(long long nb);
 void my_putnbr_base(long long nb, int base, bool uppercase);
-void my_putnbr_base_unsigned(unsigned long long nb, int base, bool uppercase);
+void my_putnbr_base_unsigned(unsigned long long nb, unsigned int base,
+        bool uppercase);
 void my_putfloat(double nb, int precision);
 int get_nb_size(long long nb, int base);
-int get_nb_size_unsigned(unsigned long long nb, int base);
+int get_nb_size_unsigned(unsigned long long nb, unsigned int base);
 #endif

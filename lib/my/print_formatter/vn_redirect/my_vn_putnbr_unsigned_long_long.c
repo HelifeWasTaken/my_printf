@@ -7,10 +7,12 @@
 
 #include <stdbool.h>
 #include <stdarg.h>
+#include <my_stdio.h>
 
-void my_putnbr_base_unsigned(unsigned long long nb, int base, bool uppercase);
+void my_putnbr_base_unsigned(unsigned long long nb, unsigned int base,
+        bool uppercase);
 
-int get_nb_size_unsigned(unsigned long long nb, int base);
+int get_nb_size_unsigned(unsigned long long nb, unsigned int base);
 
 int my_vn_putnbr_unsigned_long_long(va_list *arg)
 {
