@@ -16,6 +16,6 @@ int my_vn_putnbr_unsigned_long(va_list *arg)
 {
     unsigned long new_data = va_arg(*arg, unsigned long);
 
-    my_putnbr_base_unsigned(new_data, 8, 1);
-    return (get_nb_size_unsigned(new_data, 8));
+    my_putnbr_base_unsigned(new_data, 10, 1);
+    return (get_nb_size_unsigned(new_data, 10));
 }

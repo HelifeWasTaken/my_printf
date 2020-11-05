@@ -15,7 +15,7 @@ static void process_zeros(int precision)
         my_putchar('0');
 }
 
-static void process_number(unsigned long nb, int precision)
+static void process_number(unsigned long long nb, int precision)
 {
     if (nb >= 10) {
         process_number(nb / 10, precision - 1);
@@ -28,6 +28,8 @@ static void process_number(unsigned long nb, int precision)
 
 void my_putfloat(double nb, int precision)
 {
+    unsigned long long round_nb = 0;
+
     if (precision < 1 || precision > 6) {
         my_putstr_err("Precision should be between 1 and 6");
         return;
@@ -42,5 +44,8 @@ void my_putfloat(double nb, int precision)
     }
     for (int i = 0; i < precision; i++)
         nb *= 10;
-    process_number((unsigned long)nb, precision);
+    round_nb = nb;
+    if (round_nb % 10 == 9 && (round_nb / 10) % 10 == 9)
+        round_nb++;
+    process_number(round_nb, precision);
 }

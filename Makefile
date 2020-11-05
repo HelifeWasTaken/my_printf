@@ -114,6 +114,7 @@ SRC_TEST	=   $(PATH_LIB)/my_math/my_compute_power_rec.c \
 				\
 				$(PATH_T_MY)/my_stdio/test_my_putchar.c \
 				$(PATH_T_MY)/my_stdio/test_my_putstr.c \
+				$(PATH_T_MY)/my_stdio/test_my_printf.c \
 				\
 				$(PATH_T_MY)/my_stdlib/test_my_calloc_memset_and_bzero.c \
 				$(PATH_T_MY)/my_stdlib/test_my_getnbr.c \
