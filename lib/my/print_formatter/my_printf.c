@@ -204,8 +204,12 @@ static int process_exception(char const **str, int found_space)
 {
     (*str)++;
     if (found_space) {
-        my_putstr("% ");
-        return (2);
+        if ((*str)[1]) {
+            my_putstr("% ");
+            return (2);
+        } else {
+            return (0);
+        }
     }
     my_putchar('%');
     return (0);
@@ -294,8 +298,9 @@ static int my_printf_parser(char const **str, va_list *arg, int count_char)
             return (my_vn_get_send_to_stdio(arg, count_char));
         return (flag_func(arg));
     }
-    else
+    else {
         return (process_exception(str, found_space));
+    }
 }
 
 /*
