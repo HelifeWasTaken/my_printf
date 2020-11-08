@@ -22,9 +22,12 @@ int my_printf_exception(char const **str, va_list *arg,
     }
     if (*(*str + flag_modificater.offset + 1)) {
         my_putchar('%');
-        for (i = 0; i < flag_modificater.offset; i++)
-            my_putchar(*(*str)++);
+        for (i = 0; i < flag_modificater.offset; i++) {
+            my_putchar(**str);
+            if (**str == '.')
+                my_putchar('0');
+            (*str)++;
+        }
     }
-    (*str) += flag_modificater.offset + 1;
     return ((**str) ? i : 255);
 }

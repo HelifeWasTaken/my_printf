@@ -15,23 +15,23 @@
 static bool get_the_flag(char const c, flag_modifiers_t *flag_modificater)
 {
     switch (c) {
-    case '0':
-        flag_modificater->zero = true;
-        return (true);
-    case '#':
-        flag_modificater->hashtag = true;
-        return (true);
-    case ' ':
-        flag_modificater->count_spaces += 1;
-        return (true);
-    case '+':
-        flag_modificater->plus = true;
-        return (true);
-    case '-':
-        flag_modificater->minus = true;
-        return (true);
-    default:
-        return (false);
+        case '0':
+            flag_modificater->zero = true;
+            return (true);
+        case '#':
+            flag_modificater->hashtag = true;
+            return (true);
+        case ' ':
+            flag_modificater->count_spaces += 1;
+            return (true);
+        case '+':
+            flag_modificater->plus = true;
+            return (true);
+        case '-':
+            flag_modificater->minus = true;
+            return (true);
+        default:
+            return (false);
     }
 }
 
@@ -56,9 +56,9 @@ static void get_precision(char const **str, flag_modifiers_t *flag_modificater)
     flag_modificater->found_precision = true;
     if (is_num_letter(*(*str + flag_modificater->offset))) {
         flag_modificater->precision =
-                my_getnbr(*str + flag_modificater->offset);
+            my_getnbr(*str + flag_modificater->offset);
         flag_modificater->offset +=
-                get_nb_size(flag_modificater->precision, 10);
+            get_nb_size(flag_modificater->precision, 10);
     } else
         flag_modificater->precision = 1;
 }
@@ -67,13 +67,13 @@ void get_modification_flag(char const **str, flag_modifiers_t *flag_modificater)
 {
     intialize_struct_to_zero(flag_modificater);
     while ((**str) + flag_modificater->offset &&
-           get_the_flag(*(*str + flag_modificater->offset), flag_modificater))
+            get_the_flag(*(*str + flag_modificater->offset), flag_modificater))
         (flag_modificater->offset)++;
     if (is_num_letter(*(*str + flag_modificater->offset))) {
         flag_modificater->space_padding =
-                my_getnbr(*str + flag_modificater->offset);
+            my_getnbr(*str + flag_modificater->offset);
         flag_modificater->offset +=
-                get_nb_size(flag_modificater->space_padding, 10);
+            get_nb_size(flag_modificater->space_padding, 10);
     }
     if (*(*str + flag_modificater->offset) == '.') {
         get_precision(str, flag_modificater);

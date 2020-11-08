@@ -17,7 +17,7 @@ int my_vn_putnbr(va_list *arg, flag_modifiers_t modification_flag)
     int potential_spaces = 0;
 
     prepare_print_int(&modification_flag, new_data_size, &potential_spaces,
-                      new_data);
+            new_data);
     for (int i = 0; i < modification_flag.precision - new_data_size; i++)
         my_putchar('0');
     my_put_nbr(new_data);

@@ -10,8 +10,8 @@
 #include <my_math.h>
 
 static void continue_print_int(flag_modifiers_t *modification_flag,
-                               int *potential_following_space,
-                               int to_be_printed)
+        int *potential_following_space,
+        int to_be_printed)
 {
     if (modification_flag->plus) {
         my_putchar('+');
@@ -19,7 +19,7 @@ static void continue_print_int(flag_modifiers_t *modification_flag,
     }
     if (modification_flag->minus) {
         *potential_following_space = modification_flag->space_padding -
-                                     modification_flag->plus - to_be_printed;
+            modification_flag->plus - to_be_printed;
         return;
     }
     if (modification_flag->zero) {
@@ -30,7 +30,7 @@ static void continue_print_int(flag_modifiers_t *modification_flag,
 }
 
 void prepare_print_int(flag_modifiers_t *modification_flag, int to_be_printed,
-                       int *potential_following_space, long long nb)
+        int *potential_following_space, long long nb)
 {
     if (to_be_printed > modification_flag->space_padding)
         return;
@@ -41,11 +41,11 @@ void prepare_print_int(flag_modifiers_t *modification_flag, int to_be_printed,
             modification_flag->plus = 0;
     }
     if ((modification_flag->minus || modification_flag->precision) &&
-        modification_flag->zero) {
+            modification_flag->zero) {
         modification_flag->zero = 0;
         prints_the_following_spaces(modification_flag->space_padding -
-                                    to_be_printed);
+                to_be_printed);
     }
     continue_print_int(modification_flag, potential_following_space,
-                       to_be_printed);
+            to_be_printed);
 }

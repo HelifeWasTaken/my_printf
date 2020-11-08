@@ -99,22 +99,22 @@
 **
 */
 
-static const my_printf_flags_t array_flags[5] = {
+static const my_printf_flags_t array_flags[9] = {
     { "d", &my_vn_putnbr },
     { "i", &my_vn_putnbr },
     { "c", &my_vn_putchar },
     { "s", &my_vn_putstr },
-    /*
     { "x", &my_vn_puthex_lower },
     { "X", &my_vn_puthex_higher },
     { "b", &my_vn_putbin },
     { "o", &my_vn_putoctal },
+    { "n", &my_vn_get_send_to_stdio },
+    /*
     { "S", &my_vn_showstr_oct },
     { "u", &my_vn_putnbr_unsigned },
     { "p", &my_vn_putpointer },
     { "f", &my_vn_putfloat_precision_6 },
     { "F", &my_vn_putfloat_precision_6 },
-    { "n", 0 },
     { "ld", &my_vn_putnbr_long },
     { "li", &my_vn_putnbr_long },
     { "lo", &my_vn_putoctal_long },

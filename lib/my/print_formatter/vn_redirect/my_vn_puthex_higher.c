@@ -7,15 +7,25 @@
 
 #include <stdbool.h>
 #include <stdarg.h>
+#include <my_math.h>
+#include <my_stdio.h>
+#include <my_printf.h>
 
-void my_putnbr_base(long long nb, int base, bool uppercase);
-
-int get_nb_size(long long nb, int base);
-
-int my_vn_puthex_higher(va_list *arg)
+int my_vn_puthex_higher(va_list *arg, flag_modifiers_t flag_modificater)
 {
-    int new_data = va_arg(*arg, int);
+    unsigned int new_data = va_arg(*arg, unsigned int);
+    int new_data_size = get_nb_size_unsigned(new_data, 16);
+    int potential_following_spaces = 0;
 
-    my_putnbr_base(new_data, 16, 1);
-    return (get_nb_size(new_data, 16));
+    prepare_print_hex(&flag_modificater, &potential_following_spaces,
+            new_data_size, 1);
+    prints_the_following_spaces(potential_following_spaces);
+    my_putnbr_base_unsigned(new_data, 16, 1);
+    if (flag_modificater.precision > 8) {
+        if (flag_modificater.space_padding > flag_modificater.precision)
+            return (flag_modificater.space_padding);
+        return (flag_modificater.precision);
+    }
+    return (new_data_size + potential_following_spaces +
+            flag_modificater.already_printed);
 }

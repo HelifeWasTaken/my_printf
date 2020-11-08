@@ -73,6 +73,7 @@ SRC 		=   my_math/my_compute_power_rec.c \
 				print_formatter/format_transform/prepare_print_str.c \
 				print_formatter/format_transform/prepare_print_int.c \
 				print_formatter/format_transform/prepare_print_hex.c \
+				print_formatter/format_transform/prepare_print_oct.c \
 				\
 				print_formatter/vn_redirect/my_vn_putbin.c \
 				print_formatter/vn_redirect/my_vn_putchar.c \
