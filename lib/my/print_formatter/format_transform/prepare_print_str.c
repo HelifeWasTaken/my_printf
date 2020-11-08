@@ -21,9 +21,8 @@ void prepare_print_str(flag_modifiers_t *modification_flag, int to_be_printed,
                 modification_flag->space_padding;
     }
     if (modification_flag->already_printed) {
-        for (int i = 0; i < modification_flag->already_printed - to_be_printed;
-                i++)
-
+        for (int i = 0;
+        i < modification_flag->already_printed - to_be_printed; i++)
             my_putchar(' ');
     }
 }

@@ -61,6 +61,7 @@ static void get_precision(char const **str, flag_modifiers_t *flag_modificater)
             get_nb_size(flag_modificater->precision, 10);
     } else
         flag_modificater->precision = 1;
+        flag_modificater->default_precision = true;
 }
 
 void get_modification_flag(char const **str, flag_modifiers_t *flag_modificater)
