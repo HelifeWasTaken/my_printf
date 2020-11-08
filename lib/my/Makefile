@@ -65,6 +65,15 @@ SRC 		=   my_math/my_compute_power_rec.c \
 				my_str/print_char_in_oct.c \
 				\
 				print_formatter/my_printf.c \
+				print_formatter/my_printf_parser.c \
+				print_formatter/my_printf_flag_check/get_modificater_flag.c \
+				print_formatter/process_my_printf_exception.c \
+				print_formatter/print_following_spaces.c \
+				\
+				print_formatter/format_transform/prepare_print_str.c \
+				print_formatter/format_transform/prepare_print_int.c \
+				print_formatter/format_transform/prepare_print_hex.c \
+				\
 				print_formatter/vn_redirect/my_vn_putbin.c \
 				print_formatter/vn_redirect/my_vn_putchar.c \
 				print_formatter/vn_redirect/my_vn_puthex_higher.c \
