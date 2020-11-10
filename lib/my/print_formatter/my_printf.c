@@ -35,20 +35,30 @@
 **
 */
 
-int my_printf(char const *str, ...)
+static bool check_my_printf_basic_errors(char const *str, va_list *arg)
+{
+    int found_twice = false;
+
+    for (int i = 0; str[i]; i++) {
+        if ((str[i] != ' ' && str[i] != '%') || found_twice == 2)
+            return (true);
+        if (str[i] == '%')
+            found_twice++;
+    }
+    if (found_twice == 2)
+        return (true);
+    va_end(*arg);
+    return (false);
+}
+
+static int my_printf_loop(char const *str, va_list *arg)
 {
     int count = 0;
-    va_list arg;
-    va_start(arg, str);
 
-    if (!str) {
-        va_end(arg);
-        return (0);
-    }
     while (*str) {
         if (*str == '%' && str[1] != '%') {
             str++;
-            count += my_printf_parser(&str, &arg, count);
+            count += my_printf_parser(&str, arg, count);
         } else if (*str == '%' && str[1] == '%') {
             my_putstr("%");
             str += 2;
@@ -57,7 +67,17 @@ int my_printf(char const *str, ...)
             my_putchar(*str++);
             count++;
         }
+        va_end(*arg);
     }
-    va_end(arg);
     return (count);
+}
+
+int my_printf(char const *str, ...)
+{
+    va_list arg;
+    va_start(arg, str);
+
+    if (!check_my_printf_basic_errors(str, &arg))
+        return (-1);
+    return (my_printf_loop(str, &arg));
 }

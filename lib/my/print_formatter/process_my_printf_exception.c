@@ -11,16 +11,12 @@
 #include <my_str.h>
 #include <stdlib.h>
 
-int my_printf_exception(char const **str, va_list *arg,
-        flag_modifiers_t flag_modificater, int count_char)
+static int print_invalid_stuff(char const **str,
+                               flag_modifiers_t flag_modificater)
 {
-    int i = 0;
     int tmp_count = 0;
+    int i = 0;
 
-    if (flag_modificater.last_flag != NULL) {
-        (*str) += flag_modificater.offset;
-        return (my_vn_get_send_to_stdio(arg, count_char));
-    }
     if (*(*str + flag_modificater.offset + 1)) {
         my_putchar('%');
         tmp_count++;
@@ -34,4 +30,14 @@ int my_printf_exception(char const **str, va_list *arg,
         }
     }
     return ((**str) ? i + tmp_count : 255);
+}
+
+int my_printf_exception(char const **str, va_list *arg,
+                        flag_modifiers_t flag_modificater, int count_char)
+{
+    if (flag_modificater.last_flag != NULL) {
+        (*str) += flag_modificater.offset;
+        return (my_vn_get_send_to_stdio(arg, count_char));
+    }
+    return (print_invalid_stuff(str, flag_modificater));
 }
