@@ -33,12 +33,10 @@ typedef struct my_printf_function_redirect {
 
 int my_printf(char const *str, ...);
 int my_printf_parser(char const **str, va_list *arg, int count_char);
-
 int my_printf_exception(char const **str, va_list *arg,
         flag_modifiers_t flag_modificater, int count_char);
 void get_modification_flag(char const **str,
         flag_modifiers_t *flag_modificater);
-
 void prints_the_following_spaces(int potential_following_space);
 void prepare_print_str(flag_modifiers_t *flag_modificater, int to_be_printed,
         int *potential_following_space);
@@ -46,9 +44,11 @@ void prepare_print_int(flag_modifiers_t *modification_flag, int to_be_printed,
         int *potential_following_space, long long nb);
 void prepare_print_hex(flag_modifiers_t *modification_flag,
         int *potential_following_space, int to_be_printed, bool is_upper);
-void prepare_print_oct(flag_modifiers_t *modification_flag, int to_be_printed);
+void prepare_print_oct(flag_modifiers_t *modification_flag, int to_be_printed,
+        int *potential_following_spaces);
 void prepare_print_unsigned_int(flag_modifiers_t *modification_flag,
         int to_be_printed, int *potential_following_space);
+
 int my_vn_get_send_to_stdio(va_list *arg, int count_char);
 int my_vn_putchar(va_list *arg, flag_modifiers_t modification_flag);
 int my_vn_putstr(va_list *arg, flag_modifiers_t modification_flag);

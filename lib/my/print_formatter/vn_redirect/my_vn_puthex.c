@@ -12,8 +12,8 @@
 #include <my_printf.h>
 #include <my_str.h>
 
-    static unsigned long long
-parse_my_printf_hex_lower(va_list *arg, flag_modifiers_t flag_modficater)
+static unsigned long long parse_my_hex_lower(va_list *arg,
+        flag_modifiers_t flag_modficater)
 {
     char *temp = flag_modficater.last_flag;
 
@@ -26,12 +26,12 @@ parse_my_printf_hex_lower(va_list *arg, flag_modifiers_t flag_modficater)
     if (my_strncmp(temp, "qx", 2) == 0)
         return (va_arg(*arg, unsigned long long));
     if (my_strncmp(temp, "hhx", 3) == 0)
-        return ((char)va_arg(*arg, int));
-    return ((short int)va_arg(*arg, int));
+        return ((char)va_arg(*arg, unsigned int));
+    return ((short int)va_arg(*arg, unsigned int));
 }
 
-    static unsigned long long
-parse_my_printf_hex_upper(va_list *arg, flag_modifiers_t flag_modficater)
+static unsigned long long parse_my_hex_upper(va_list *arg,
+        flag_modifiers_t flag_modficater)
 {
     char *temp = flag_modficater.last_flag;
 
@@ -44,14 +44,13 @@ parse_my_printf_hex_upper(va_list *arg, flag_modifiers_t flag_modficater)
     if (my_strncmp(temp, "qX", 2) == 0)
         return (va_arg(*arg, unsigned long long));
     if (my_strncmp(temp, "hhX", 3) == 0)
-        return ((char)va_arg(*arg, int));
-    return ((short int)va_arg(*arg, int));
+        return ((char)va_arg(*arg, unsigned int));
+    return ((short int)va_arg(*arg, unsigned int));
 }
 
 int my_vn_puthex_lower(va_list *arg, flag_modifiers_t flag_modificater)
 {
-    unsigned long long new_data =
-        parse_my_printf_hex_lower(arg, flag_modificater);
+    unsigned long long new_data = parse_my_hex_lower(arg, flag_modificater);
     int new_data_size = get_nb_size_unsigned(new_data, 16);
     int potential_following_spaces = 0;
 
@@ -70,8 +69,7 @@ int my_vn_puthex_lower(va_list *arg, flag_modifiers_t flag_modificater)
 
 int my_vn_puthex_upper(va_list *arg, flag_modifiers_t flag_modificater)
 {
-    unsigned long long new_data =
-        parse_my_printf_hex_upper(arg, flag_modificater);
+    unsigned long long new_data = parse_my_hex_upper(arg, flag_modificater);
     int new_data_size = get_nb_size_unsigned(new_data, 16);
     int potential_following_spaces = 0;
 

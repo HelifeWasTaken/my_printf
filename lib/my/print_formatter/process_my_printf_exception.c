@@ -12,7 +12,7 @@
 #include <stdlib.h>
 
 static int print_invalid_stuff(char const **str,
-                               flag_modifiers_t flag_modificater)
+        flag_modifiers_t flag_modificater)
 {
     int tmp_count = 0;
     int i = 0;
@@ -33,7 +33,7 @@ static int print_invalid_stuff(char const **str,
 }
 
 int my_printf_exception(char const **str, va_list *arg,
-                        flag_modifiers_t flag_modificater, int count_char)
+        flag_modifiers_t flag_modificater, int count_char)
 {
     if (flag_modificater.last_flag != NULL) {
         (*str) += flag_modificater.offset;
