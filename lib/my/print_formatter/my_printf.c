@@ -41,8 +41,10 @@ int my_printf(char const *str, ...)
     va_list arg;
     va_start(arg, str);
 
-    if (!str)
+    if (!str) {
+        va_end(arg);
         return (0);
+    }
     while (*str) {
         if (*str == '%' && str[1] != '%') {
             str++;
