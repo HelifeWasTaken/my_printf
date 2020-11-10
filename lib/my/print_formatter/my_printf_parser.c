@@ -10,6 +10,8 @@
 #include <my_str.h>
 #include <stdbool.h>
 #include <my_str.h>
+#include <my_stdio.h>
+#include <my_math.h>
 
 /*
 **    This is simply a global structure containing every flags
@@ -99,7 +101,7 @@
 **
 */
 
-static const my_printf_flags_t array_flags[12] = {
+static const my_printf_flags_t array_flags[15] = {
     { "d", &my_vn_putnbr },
     { "i", &my_vn_putnbr },
     { "c", &my_vn_putchar },
@@ -115,6 +117,8 @@ static const my_printf_flags_t array_flags[12] = {
     { "u", &my_vn_putnbr_unsigned },
     { "f", &my_vn_putfloat },
     { "F", &my_vn_putfloat },
+    */
+    /*
     { "ld", &my_vn_putnbr_long },
     { "li", &my_vn_putnbr_long },
     { "lo", &my_vn_putoctal_long },
@@ -182,7 +186,7 @@ static const my_printf_flags_t array_flags[12] = {
 int my_printf_parser(char const **str, va_list *arg, int count_char)
 {
     flag_modifiers_t flag_modificater;
-    int (*flag_func)(va_list * arg, flag_modifiers_t flag_modificater) = NULL;
+    int (*flag_func)(va_list *arg, flag_modifiers_t flag_modificater) = NULL;
 
     get_modification_flag(str, &flag_modificater);
     for (int i = 0; array_flags[i].flag != NULL; i++) {

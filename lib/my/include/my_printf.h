@@ -18,8 +18,8 @@ typedef struct my_printf_flag_modification_struct {
     bool minus;
     bool zero;
     bool found_precision;
+    bool found_space;
     bool default_precision;
-    int count_spaces;
     int space_padding;
     int precision;
     int offset;
@@ -47,7 +47,9 @@ void prepare_print_int(flag_modifiers_t *modification_flag, int to_be_printed,
 void prepare_print_hex(flag_modifiers_t *modification_flag,
         int *potential_following_space, int to_be_printed, bool is_upper);
 void prepare_print_oct(flag_modifiers_t *modification_flag, int to_be_printed);
-
+void prepare_print_unsigned_int(flag_modifiers_t *modification_flag,
+        int to_be_printed, int *potential_following_space,
+        long long unsigned nb);
 int my_vn_get_send_to_stdio(va_list *arg, int count_char);
 int my_vn_putchar(va_list *arg, flag_modifiers_t modification_flag);
 int my_vn_putstr(va_list *arg, flag_modifiers_t modification_flag);
@@ -64,7 +66,7 @@ int my_vn_putfloat(va_list *arg, flag_modifiers_t modification_flag);
 int my_vn_putnbr_long(va_list *arg, flag_modifiers_t modification_flag);
 int my_vn_putoctal_long(va_list *arg, flag_modifiers_t modification_flag);
 int my_vn_putnbr_unsigned_long(va_list *arg,
-flag_modifiers_t modification_flag);
+        flag_modifiers_t modification_flag);
 int my_vn_puthex_lower_long(va_list *arg, flag_modifiers_t modification_flag);
 int my_vn_puthex_higher_long(va_list *arg, flag_modifiers_t modification_flag);
 int my_vn_putnbr_long_long(va_list *arg, flag_modifiers_t modification_flag);

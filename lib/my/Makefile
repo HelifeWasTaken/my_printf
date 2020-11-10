@@ -74,6 +74,7 @@ SRC 		=   my_math/my_compute_power_rec.c \
 				print_formatter/format_transform/prepare_print_int.c \
 				print_formatter/format_transform/prepare_print_hex.c \
 				print_formatter/format_transform/prepare_print_oct.c \
+				print_formatter/format_transform/prepare_print_unsigned_int.c \
 				\
 				print_formatter/vn_redirect/my_vn_putbin.c \
 				print_formatter/vn_redirect/my_vn_putchar.c \
@@ -86,7 +87,7 @@ SRC 		=   my_math/my_compute_power_rec.c \
 				print_formatter/vn_redirect/my_vn_putpointer.c \
 				print_formatter/vn_redirect/my_vn_get_send_to_stdio.c \
 				print_formatter/vn_redirect/my_vn_putnbr_unsigned.c \
-				print_formatter/vn_redirect/my_vn_putfloat_precision_6.c \
+				print_formatter/vn_redirect/my_vn_putfloat.c \
 				print_formatter/vn_redirect/my_vn_puthex_higher_long.c \
 				print_formatter/vn_redirect/my_vn_puthex_lower_long.c \
 				print_formatter/vn_redirect/my_vn_putnbr_unsigned_long.c \

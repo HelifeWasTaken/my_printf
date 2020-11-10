@@ -12,9 +12,10 @@
 #include <stdlib.h>
 
 int my_printf_exception(char const **str, va_list *arg,
-                        flag_modifiers_t flag_modificater, int count_char)
+        flag_modifiers_t flag_modificater, int count_char)
 {
     int i = 0;
+    int tmp_count = 0;
 
     if (flag_modificater.last_flag != NULL) {
         (*str) += flag_modificater.offset;
@@ -22,12 +23,15 @@ int my_printf_exception(char const **str, va_list *arg,
     }
     if (*(*str + flag_modificater.offset + 1)) {
         my_putchar('%');
+        tmp_count++;
         for (i = 0; i < flag_modificater.offset; i++) {
             my_putchar(**str);
-            if (**str == '.')
+            if (**str == '.') {
                 my_putchar('0');
+                tmp_count++;
+            }
             (*str)++;
         }
     }
-    return ((**str) ? i : 255);
+    return ((**str) ? i + tmp_count : 255);
 }
