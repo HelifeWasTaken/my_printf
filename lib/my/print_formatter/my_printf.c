@@ -16,22 +16,10 @@
 
 /*
 **
-** This the first function invoked like the original one
+** The error check function is created in case the guy printed a single
+** % potentially multiple spaces and nothing more
 **
-** It simply goes into the whole string and parse
-** it in a very primitive algorithm
-**
-** It looks at the first one if it's a percentage and the second is not
-** send the argument to the my_printf parser
-**
-** Edit :
-** It does no send the argument anymore directly but send the list of arguments
-**
-**
-** If both *str and str[1] are a percentage it prints a percentage
-** then process
-**
-** Otherwise it simply print with my_putchar
+** If this case is true my_printf end up returning -1
 **
 */
 
@@ -50,6 +38,15 @@ static bool check_my_printf_basic_errors(char const *str, va_list *arg)
     va_end(*arg);
     return (false);
 }
+
+/*
+** This loop check for a moment in the string
+** that has a single percentage and no % following it to go into the parser
+** Otherwise it simply print each character
+**
+** This loop also permits me to handle the %% flag
+**
+*/
 
 static int my_printf_loop(char const *str, va_list *arg)
 {
@@ -71,6 +68,11 @@ static int my_printf_loop(char const *str, va_list *arg)
     }
     return (count);
 }
+
+/*
+** This simply initiate a va_list
+** and call the my_printf loop and the error chec
+*/
 
 int my_printf(char const *str, ...)
 {

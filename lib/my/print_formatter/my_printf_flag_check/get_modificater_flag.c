@@ -12,6 +12,12 @@
 #include <my_stdlib.h>
 #include <my_stdio.h>
 
+/*
+**
+** This is a simple switch permitting me to turn on the flags encountered
+**
+*/
+
 static bool get_the_flag(char const c, flag_modifiers_t *flag_modificater)
 {
     switch (c) {
@@ -35,6 +41,13 @@ static bool get_the_flag(char const c, flag_modifiers_t *flag_modificater)
     }
 }
 
+/*
+**
+** A simple function to be clean while using the structure
+** To be sure that everything is setted to zero
+**
+*/
+
 static void intialize_struct_to_zero(flag_modifiers_t *flag_modificater)
 {
     flag_modificater->last_flag = NULL;
@@ -50,6 +63,14 @@ static void intialize_struct_to_zero(flag_modifiers_t *flag_modificater)
     flag_modificater->already_printed = 0;
 }
 
+/*
+**
+** This is called when '.' is found while searching for the flags modificater
+** It basically gets if the default precision should be used or
+** If you should use a precision explicitely given
+**
+*/
+
 static void get_precision(char const **str, flag_modifiers_t *flag_modificater)
 {
     (flag_modificater->offset)++;
@@ -64,6 +85,15 @@ static void get_precision(char const **str, flag_modifiers_t *flag_modificater)
         flag_modificater->default_precision = true;
     }
 }
+
+/*
+**
+** This is the function parsing the whole modification and making the calls
+** to the functions seen above
+**
+** It calculate the offset in real time
+**
+*/
 
 void get_modification_flag(char const **str, flag_modifiers_t *flag_modificater)
 {

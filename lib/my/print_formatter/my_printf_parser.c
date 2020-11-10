@@ -14,90 +14,22 @@
 #include <my_math.h>
 
 /*
+**
 **    This is simply a global structure containing every flags
 **    that I need to procces my parsing
 **
-**    structure looks like this :
+**    The structure looks like this :
+**
 **    typedef struct my_printf_struct {
 **        char *flag;
-**        int (*flag_function)(void *data);
-**    } my_printf_flags;
-**
-**    my_vn_something is a reference to an old hack
-**    of redirecting everything with void * in structures
-**    and casting it in the adequates functions
-**
-**    for example :
-**    int my_vn_putstr(void *data)
-**    {
-**        my_putstr(data);
-**        return (my_strlen(data));  To return how many characters have
-**    }                              been printed
-**
-**    As the write buffer takes a (void *) as argument
-**    and it is not a problem to do a my_strlen on void * as while
-**    it is being passed as argument it is
-**    casted automatically to a char * and so can be dereferenced
-**
-**    But :
-**
-**    int my_vn_putnbr(void *data)
-**    {
-**        long new_data = (long)data;   Need to be casted !
-**
-**        my_putnbr(new_data);
-**        return (get_nb_size(new_data, 10)) calculate
-**    }                                      how many characters
-**                                           have been printed
-**
-**    Originally I wanted to cast it in int but I learned a lot
-**    about casting and from compiler errors mostly
-**    Knowing that I could not do arithmetic with a void *
-**    I just casted to an integer that had the size of a void *
-**
-**    // Deprecated
-**
-**    But now nothing is passed as void * anymore as my vn_function get the
-**    va_list argument directly and are casted with va_arg
-**    which seems much more safe
-**    Because of casting from void * to float had some weird bit level hacking
-**
-**    That looked like :
-**
-**    int my_vn_putfloat(void *data)
-**    {
-**       void *data = 5678.878;
-**       float *new_data = *(float *)&data;
-**       evil floating point bit level hacking
-**
-**       my_putfloat(*new_data);
-**       return (get_nb_size((double)*new_data, 10) + 7);
-**    }
-**
-**    And I was scared of undefined behaviour with this kind that was tho legit
-**    And still worked perfectly for the little time that I used it
-**
-**    so now the structure looks like this :
-**    typedef struct my_printf_struct {
-**        char *flag;
-**        int (*flag_function)(va_list *arg);
+**        int (*flag_function)(va_list , flag_modificater_t );
 **    } my_printf_flags;
 **
 **    And the function looks like that now :
 **
-**    int my_vn_putfloat(va_list *arg)
-**    {
-**        double new_data = va_arg(*arg, double);
-**
-**        my_putfloat((float)new_data, 6);
-**        return (7 + get_nb_size(new_data));
-**    }
-**
-**    As you can see this version seems more portable
-**    than the casting to float * with weird bit level hacking
-**
-**    For the vn_stuff name I kept it as va_arg is still a linked list
-**    of void * and I do the cast in the other functions
+**    A second structure containing the flag modfification state is sended
+**    into the pointer function as you can see and it permits to
+**    transform the string given as you want
 **
 */
 
@@ -165,19 +97,13 @@ static const my_printf_flags_t array_flags[170] = {
 **
 ** For example %d and %i will point to my_vn_putnbr
 **
-** As I could not pass the counter of character into the function
-** because the function pointer could handle only one argument that was
-** void *data I did a check in a "brute force may kind of" and
-** just sended to a function manually
-**
-** Otherwise if the flag was not recognizable it is simply going into
-** (*flag_func)(void *data); and doing the display with the given argument
-**
-** // Deprecated
-**
 ** Now the flag function is no more getting a void * but
 ** the complete va_list linked list
 ** It simply send the list to avoir UB and cast with va_arg directly
+**
+** For the %n flag management it is processed as an exception
+**
+** everything else is handled into each own function
 **
 */
 

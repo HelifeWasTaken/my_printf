@@ -11,6 +11,20 @@
 #include <my_str.h>
 #include <stdlib.h>
 
+/*
+**
+** This function with the offset provided by flag_modifiers_t it permits me
+** to send print the whole invalid string safely
+**
+** If a '.' is encountered a '0' will be printed before
+**
+** The percent sign will always be printed
+** At the end if **str is equivalent to '\0'
+**
+** I need to return 255 as real the real function does
+**
+*/
+
 static int print_invalid_stuff(char const **str,
         flag_modifiers_t flag_modificater)
 {
@@ -31,6 +45,16 @@ static int print_invalid_stuff(char const **str,
     }
     return ((**str) ? i + tmp_count : 255);
 }
+
+/*
+**
+** Here as the sstructure flag_modificater is passed as an argument
+** I check before if the last flag was a %n if so I can proceed to send it
+** into the right function
+**
+** Otherwise I ask it to send it to print_invalid_stuff()
+**
+*/
 
 int my_printf_exception(char const **str, va_list *arg,
         flag_modifiers_t flag_modificater, int count_char)
