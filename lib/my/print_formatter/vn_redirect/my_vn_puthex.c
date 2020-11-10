@@ -12,7 +12,7 @@
 #include <my_printf.h>
 #include <my_str.h>
 
-static unsigned long long
+    static unsigned long long
 parse_my_printf_hex_lower(va_list *arg, flag_modifiers_t flag_modficater)
 {
     char *temp = flag_modficater.last_flag;
@@ -30,7 +30,7 @@ parse_my_printf_hex_lower(va_list *arg, flag_modifiers_t flag_modficater)
     return ((short int)va_arg(*arg, int));
 }
 
-static unsigned long long
+    static unsigned long long
 parse_my_printf_hex_upper(va_list *arg, flag_modifiers_t flag_modficater)
 {
     char *temp = flag_modficater.last_flag;
@@ -51,12 +51,12 @@ parse_my_printf_hex_upper(va_list *arg, flag_modifiers_t flag_modficater)
 int my_vn_puthex_lower(va_list *arg, flag_modifiers_t flag_modificater)
 {
     unsigned long long new_data =
-            parse_my_printf_hex_lower(arg, flag_modificater);
+        parse_my_printf_hex_lower(arg, flag_modificater);
     int new_data_size = get_nb_size_unsigned(new_data, 16);
     int potential_following_spaces = 0;
 
     prepare_print_hex(&flag_modificater, &potential_following_spaces,
-                      new_data_size, 0);
+            new_data_size, 0);
     prints_the_following_spaces(potential_following_spaces);
     my_putnbr_base_unsigned(new_data, 16, 0);
     if (flag_modificater.precision > 8) {
@@ -71,12 +71,12 @@ int my_vn_puthex_lower(va_list *arg, flag_modifiers_t flag_modificater)
 int my_vn_puthex_upper(va_list *arg, flag_modifiers_t flag_modificater)
 {
     unsigned long long new_data =
-            parse_my_printf_hex_upper(arg, flag_modificater);
+        parse_my_printf_hex_upper(arg, flag_modificater);
     int new_data_size = get_nb_size_unsigned(new_data, 16);
     int potential_following_spaces = 0;
 
     prepare_print_hex(&flag_modificater, &potential_following_spaces,
-                      new_data_size, 1);
+            new_data_size, 1);
     prints_the_following_spaces(potential_following_spaces);
     my_putnbr_base_unsigned(new_data, 16, 1);
     if (flag_modificater.precision > 8) {

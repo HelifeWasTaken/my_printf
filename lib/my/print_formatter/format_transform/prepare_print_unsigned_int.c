@@ -9,7 +9,7 @@
 #include <my_stdio.h>
 #include <my_math.h>
 
-static void
+    static void
 get_print_unsigned_int_transformations(flag_modifiers_t *modification_flag)
 {
     if (modification_flag->plus) {
@@ -26,14 +26,14 @@ get_print_unsigned_int_transformations(flag_modifiers_t *modification_flag)
         modification_flag->zero = false;
 }
 
-static void
+    static void
 print_precision_with_bigger_padding(flag_modifiers_t *modification_flag,
-                                    int to_be_printed)
+        int to_be_printed)
 {
     int temp = modification_flag->space_padding - to_be_printed -
-               modification_flag->already_printed;
+        modification_flag->already_printed;
     int temp2 = modification_flag->precision - to_be_printed -
-                modification_flag->already_printed;
+        modification_flag->already_printed;
 
     if (modification_flag->zero) {
         for (int i = 0; i < temp; i++)
@@ -49,29 +49,29 @@ print_precision_with_bigger_padding(flag_modifiers_t *modification_flag,
 }
 
 static void process_print_no_precision(flag_modifiers_t *modification_flag,
-                                       int to_be_printed,
-                                       int *potential_following_space)
+        int to_be_printed,
+        int *potential_following_space)
 {
     print_precision_with_bigger_padding(modification_flag, to_be_printed);
     if (modification_flag->space_padding - to_be_printed -
-                        modification_flag->already_printed >
-                0 &&
-        !(modification_flag->zero)) {
+            modification_flag->already_printed >
+            0 &&
+            !(modification_flag->zero)) {
         if (modification_flag->minus) {
             *potential_following_space = modification_flag->space_padding -
-                                         to_be_printed -
-                                         modification_flag->already_printed;
+                to_be_printed -
+                modification_flag->already_printed;
         } else
             prints_the_following_spaces(modification_flag->space_padding -
-                                        to_be_printed -
-                                        modification_flag->already_printed);
+                    to_be_printed -
+                    modification_flag->already_printed);
     }
     if (modification_flag->plus)
         my_putchar('+');
 }
 
 void process_print_unsigned_int_precision(flag_modifiers_t *modfication_flag,
-                                          int to_be_printed)
+        int to_be_printed)
 {
     if (modfication_flag->plus)
         my_putchar('+');
@@ -79,15 +79,15 @@ void process_print_unsigned_int_precision(flag_modifiers_t *modfication_flag,
         my_putchar('0');
     if (modfication_flag->precision - to_be_printed > 0)
         modfication_flag->already_printed +=
-                modfication_flag->precision - to_be_printed;
+            modfication_flag->precision - to_be_printed;
 }
 
 void prepare_print_unsigned_int(flag_modifiers_t *modification_flag,
-                                int to_be_printed,
-                                int *potential_following_space)
+        int to_be_printed,
+        int *potential_following_space)
 {
     if (modification_flag->precision < to_be_printed &&
-        modification_flag->space_padding < to_be_printed) {
+            modification_flag->space_padding < to_be_printed) {
         if (modification_flag->plus)
             my_putchar('+');
         return;
@@ -98,5 +98,5 @@ void prepare_print_unsigned_int(flag_modifiers_t *modification_flag,
         return;
     }
     process_print_no_precision(modification_flag, to_be_printed,
-                               potential_following_space);
+            potential_following_space);
 }

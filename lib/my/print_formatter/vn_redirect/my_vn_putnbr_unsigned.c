@@ -11,7 +11,8 @@
 #include <my_math.h>
 #include <my_str.h>
 
-static long long parse_my_unsigned_int(va_list *arg, flag_modifiers_t modification_flag)
+static long long parse_my_unsigned_int(va_list *arg,
+        flag_modifiers_t modification_flag)
 {
     char *temp = modification_flag.last_flag;
 
@@ -34,7 +35,8 @@ int my_vn_putnbr_unsigned(va_list *arg, flag_modifiers_t modification_flag)
     int new_data_size = get_nb_size_unsigned(new_data, 10);
     int potential_spaces = 0;
 
-    prepare_print_unsigned_int(&modification_flag, new_data_size, &potential_spaces);
+    prepare_print_unsigned_int(&modification_flag, new_data_size,
+            &potential_spaces);
     my_put_nbr_unsigned(new_data);
     prints_the_following_spaces(potential_spaces);
     if (modification_flag.precision - new_data_size > 0)
