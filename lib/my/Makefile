@@ -105,12 +105,25 @@ copy:
 	mkdir -p ../../include
 	cp include/*.h ../../include
 
-clean:
-	rm -rf $(OBJ)
+clean: ## Clean every temporay well knowed files
+	@find . -type f \( -name "\#*\#" -o -name "*.swp" \) -delete
+	@find . -type f \( -name "*.gc*" -o -name "a.out" \) -delete
+	@find . -type f \( -name "*.o" -o -name "*~" -o -name "*.a" \) -delete
+	@echo "Cleaned project !"
 
-fclean:		clean
-	rm -rf $(NAME) a.out
+fclean:		clean ## Call clean rule nothing more
 
-re:			fclean all
+re:			fclean all ## Call fclean then all rule
+
+test: tests_run ## An alias to tests_run
+
+tests_run: clean ## Cleans the project and run the unit tests
+	make copy -C ./lib/my
+	$(CC) $(SRC_TEST) $(CFLAGS) $(TEST_FLAGS) -o $(UNIT_TEST_EXEC)
+	./$(UNIT_TEST_EXEC)
+
+usage: ## Print the usage
+	@grep -h "##" Makefile | sed -e 's/\(\:.*\#\#\)/\:\ /' | grep -v grep | sed -e 's/\\$$//' | sed -e 's/##//'
+	@echo "\nEnjoy the project ! :D"
 
 .PHONY:		all build_lib copy clean fclean re
