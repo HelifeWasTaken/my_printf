@@ -9,8 +9,7 @@
 #include <my_printf.h>
 #include <stdarg.h>
 #include <unistd.h>
-#include <my_stdio.h>
-#include <my_math.h>
+#include <wchar.h>
 
 int my_vn_putstr(va_list *arg, flag_modifiers_t modification_flag)
 {

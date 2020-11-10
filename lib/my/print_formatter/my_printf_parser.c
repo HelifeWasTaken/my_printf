@@ -101,13 +101,13 @@
 **
 */
 
-static const my_printf_flags_t array_flags[15] = {
+static const my_printf_flags_t array_flags[170] = {
     { "d", &my_vn_putnbr },
     { "i", &my_vn_putnbr },
     { "c", &my_vn_putchar },
     { "s", &my_vn_putstr },
     { "x", &my_vn_puthex_lower },
-    { "X", &my_vn_puthex_higher },
+    { "X", &my_vn_puthex_upper },
     { "b", &my_vn_putbin },
     { "o", &my_vn_putoctal },
     { "n", 0 },
@@ -118,38 +118,48 @@ static const my_printf_flags_t array_flags[15] = {
     { "f", &my_vn_putfloat },
     { "F", &my_vn_putfloat },
     */
+    { "lc", &my_vn_putchar },
+    { "ls", &my_vn_putstr },
+    { "ld", &my_vn_putnbr },
+    { "li", &my_vn_putnbr },
     /*
-    { "ld", &my_vn_putnbr_long },
-    { "li", &my_vn_putnbr_long },
     { "lo", &my_vn_putoctal_long },
     { "lu", &my_vn_putnbr_unsigned_long },
-    { "lx", &my_vn_puthex_lower_long },
-    { "lX", &my_vn_puthex_higher_long },
-    { "lld", &my_vn_putnbr_long_long },
-    { "lli", &my_vn_putnbr_long_long },
+    */
+    { "lx", &my_vn_puthex_lower },
+    { "lX", &my_vn_puthex_upper },
+    { "lld", &my_vn_putnbr },
+    { "lli", &my_vn_putnbr },
+    /*
     { "llo", &my_vn_putoctal_long_long },
     { "llu", &my_vn_putnbr_unsigned_long_long },
-    { "llx", &my_vn_puthex_lower_long_long },
-    { "llX", &my_vn_puthex_higher_long_long },
-    { "qd", &my_vn_putnbr_long_long },
-    { "qi", &my_vn_putnbr_long_long },
+    */
+    { "llx", &my_vn_puthex_lower },
+    { "llX", &my_vn_puthex_upper },
+    { "qd", &my_vn_putnbr },
+    { "qi", &my_vn_putnbr },
+    /*
     { "qo", &my_vn_putoctal_long_long },
     { "qu", &my_vn_putnbr_unsigned_long_long },
-    { "qx", &my_vn_puthex_lower_long_long },
-    { "qX", &my_vn_puthex_higher_long_long },
-    { "hhd", &my_vn_cast_int_to_unsigned_char },
-    { "hhi", &my_vn_cast_int_to_unsigned_char },
+    */
+    { "qx", &my_vn_puthex_lower },
+    { "qX", &my_vn_puthex_upper },
+    { "hhd", &my_vn_putnbr },
+    { "hhi", &my_vn_putnbr },
+    /*
     { "hho", &my_vn_cast_oct_to_unsigned_char },
     { "hhu", &my_vn_cast_unsigned_to_unsigned_char },
-    { "hhx", &my_vn_cast_hex_low_to_unsigned_char },
-    { "hhX", &my_vn_cast_hex_high_to_unsigned_char },
-    { "hd", &my_vn_cast_int_to_unsigned_short_int },
-    { "hi", &my_vn_cast_int_to_unsigned_short_int },
+    */
+    { "hhx", &my_vn_puthex_lower },
+    { "hhX", &my_vn_puthex_upper },
+    { "hd", &my_vn_putnbr },
+    { "hi", &my_vn_putnbr },
+    /*
     { "ho", &my_vn_cast_oct_to_unsigned_short_int },
     { "hu", &my_vn_cast_unsigned_to_unsigned_short_int },
-    { "hx", &my_vn_cast_hex_low_to_unsigned_short_int },
-    { "hX", &my_vn_cast_hex_high_to_unsigned_short_int },
     */
+    { "hx", &my_vn_puthex_lower },
+    { "hX", &my_vn_puthex_upper },
     { NULL, 0 },
 };
 
