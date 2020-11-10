@@ -113,8 +113,8 @@ static const my_printf_flags_t array_flags[170] = {
     { "n", 0 },
     { "S", &my_vn_showstr_oct },
     { "p", &my_vn_putpointer },
-    /*
     { "u", &my_vn_putnbr_unsigned },
+    /*
     { "f", &my_vn_putfloat },
     { "F", &my_vn_putfloat },
     */
@@ -124,40 +124,40 @@ static const my_printf_flags_t array_flags[170] = {
     { "li", &my_vn_putnbr },
     /*
     { "lo", &my_vn_putoctal_long },
-    { "lu", &my_vn_putnbr_unsigned_long },
     */
+    { "lu", &my_vn_putnbr_unsigned },
     { "lx", &my_vn_puthex_lower },
     { "lX", &my_vn_puthex_upper },
     { "lld", &my_vn_putnbr },
     { "lli", &my_vn_putnbr },
     /*
     { "llo", &my_vn_putoctal_long_long },
-    { "llu", &my_vn_putnbr_unsigned_long_long },
     */
+    { "llu", &my_vn_putnbr_unsigned },
     { "llx", &my_vn_puthex_lower },
     { "llX", &my_vn_puthex_upper },
     { "qd", &my_vn_putnbr },
     { "qi", &my_vn_putnbr },
     /*
     { "qo", &my_vn_putoctal_long_long },
-    { "qu", &my_vn_putnbr_unsigned_long_long },
     */
+    { "qu", &my_vn_putnbr_unsigned },
     { "qx", &my_vn_puthex_lower },
     { "qX", &my_vn_puthex_upper },
     { "hhd", &my_vn_putnbr },
     { "hhi", &my_vn_putnbr },
     /*
     { "hho", &my_vn_cast_oct_to_unsigned_char },
-    { "hhu", &my_vn_cast_unsigned_to_unsigned_char },
     */
+    { "hhu", &my_vn_putnbr_unsigned },
     { "hhx", &my_vn_puthex_lower },
     { "hhX", &my_vn_puthex_upper },
     { "hd", &my_vn_putnbr },
     { "hi", &my_vn_putnbr },
     /*
     { "ho", &my_vn_cast_oct_to_unsigned_short_int },
-    { "hu", &my_vn_cast_unsigned_to_unsigned_short_int },
     */
+    { "hu", &my_vn_putnbr_unsigned },
     { "hx", &my_vn_puthex_lower },
     { "hX", &my_vn_puthex_upper },
     { NULL, 0 },
