@@ -15,7 +15,7 @@
 ** if you want to see the output
 */
 
-Test(test_printf_scilence, check_that_it_does_not_segfault, cr_stdout)
+Test(test_printf_scilence, check_that_it_does_not_segfault)//, cr_stdout)
 {
     char *strptr = "hello";
 
@@ -43,7 +43,7 @@ Test(test_printf_scilence, check_that_it_does_not_segfault, cr_stdout)
     my_printf("%o\n", 50);
     printf("%o\n", 50);
 
-    my_printf("showstr_epi : %S\n", "Hello");
+    my_printf("showstr_epi : %S\n", "He\tllo\n\t");
     //printf("%S\n", "Hello");
 
     my_printf("%u\n", 50);

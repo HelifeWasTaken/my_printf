@@ -57,6 +57,7 @@ static void intialize_struct_to_zero(flag_modifiers_t *flag_modificater)
     flag_modificater->minus = false;
     flag_modificater->found_precision = false;
     flag_modificater->found_space = false;
+    flag_modificater->default_precision = true;
     flag_modificater->space_padding = 0;
     flag_modificater->precision = 0;
     flag_modificater->offset = 0;
