@@ -33,7 +33,7 @@
 **
 */
 
-static const my_printf_flags_t array_flags[170] = {
+static const my_printf_flags_t array_flags[71] = {
     { "d", &my_vn_putnbr },
     { "i", &my_vn_putnbr },
     { "c", &my_vn_putchar },
@@ -80,6 +80,30 @@ static const my_printf_flags_t array_flags[170] = {
     { "hu", &my_vn_putnbr_unsigned },
     { "hx", &my_vn_puthex_lower },
     { "hX", &my_vn_puthex_upper },
+    { "Zd", &my_vn_putnbr },
+    { "Zi", &my_vn_putnbr },
+    { "Zo", &my_vn_putoctal },
+    { "Zu", &my_vn_putnbr_unsigned },
+    { "Zx", &my_vn_puthex_lower },
+    { "ZX", &my_vn_puthex_upper },
+    { "zd", &my_vn_putnbr },
+    { "zi", &my_vn_putnbr },
+    { "zo", &my_vn_putoctal },
+    { "zu", &my_vn_putnbr_unsigned },
+    { "zx", &my_vn_puthex_lower },
+    { "zX", &my_vn_puthex_upper },
+    { "jd", &my_vn_putnbr },
+    { "ji", &my_vn_putnbr },
+    { "jo", &my_vn_putoctal },
+    { "ju", &my_vn_putnbr_unsigned },
+    { "jx", &my_vn_puthex_lower },
+    { "jX", &my_vn_puthex_upper },
+    { "td", &my_vn_putnbr },
+    { "ti", &my_vn_putnbr },
+    { "to", &my_vn_putoctal },
+    { "tu", &my_vn_putnbr_unsigned },
+    { "tx", &my_vn_puthex_lower },
+    { "tX", &my_vn_puthex_upper },
     { NULL, 0 },
 };
 

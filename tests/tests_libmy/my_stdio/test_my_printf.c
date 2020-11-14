@@ -342,4 +342,30 @@ Test(test_printf_scilence, check_that_it_does_not_segfault)//, cr_stdout)
     my_printf("%-#056.llu", 456789);
     my_printf("%-056.llu", 456789);
     my_printf("%+056.llu", 456789);
+
+    my_printf("%Zd", 7890);
+    my_printf("%Zi", 7890);
+    my_printf("%Zo", 7890);
+    my_printf("%Zu", 7890);
+    my_printf("%Zx", 7890);
+    my_printf("%ZX", 7890);
+    my_printf("%zd", 7890);
+    my_printf("%zi", 7890);
+    my_printf("%zo", 7890);
+    my_printf("%zu", 7890);
+    my_printf("%zx", 7890);
+    my_printf("%zX", 7890);
+    my_printf("%jd", 7890);
+    my_printf("%ji", 7890);
+    my_printf("%jo", 7890);
+    my_printf("%ju", 7890);
+    my_printf("%jx", 7890);
+    my_printf("%jX", 7890);
+    my_printf("%td", 7890);
+    my_printf("%ti", 7890);
+    my_printf("%to", 7890);
+    my_printf("%tu", 7890);
+    my_printf("%tx", 7890);
+    my_printf("%tX", 7890);
+
 }

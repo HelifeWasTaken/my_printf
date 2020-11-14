@@ -11,6 +11,7 @@
 #include <my_stdio.h>
 #include <my_printf.h>
 #include <my_str.h>
+#include <stdint.h>
 
 static unsigned long long parse_my_hex_lower(va_list *arg,
         flag_modifiers_t flag_modficater)
@@ -27,13 +28,18 @@ static unsigned long long parse_my_hex_lower(va_list *arg,
         return (va_arg(*arg, unsigned long long));
     if (my_strncmp(temp, "hhx", 3) == 0)
         return ((char)va_arg(*arg, unsigned int));
+    if (my_strncmp(temp, "jx", 2) == 0)
+        return ((uintmax_t)va_arg(*arg, uintmax_t));
+    if (my_strncmp(temp, "zx", 2) == 0 || my_strncmp(temp, "Zx", 2) == 0 ||
+        my_strncmp(temp, "tx", 2) == 0 || my_strncmp(temp, "tx", 2) == 0)
+        return ((size_t)va_arg(*arg, size_t));
     return ((short int)va_arg(*arg, unsigned int));
 }
 
 static unsigned long long parse_my_hex_upper(va_list *arg,
         flag_modifiers_t flag_modficater)
 {
-    char *temp = flag_modficater.last_flag;
+   char *temp = flag_modficater.last_flag;
 
     if (my_strncmp(temp, "X", 1) == 0)
         return (va_arg(*arg, unsigned int));
@@ -45,6 +51,11 @@ static unsigned long long parse_my_hex_upper(va_list *arg,
         return (va_arg(*arg, unsigned long long));
     if (my_strncmp(temp, "hhX", 3) == 0)
         return ((char)va_arg(*arg, unsigned int));
+    if (my_strncmp(temp, "jX", 2) == 0)
+        return ((uintmax_t)va_arg(*arg, uintmax_t));
+    if (my_strncmp(temp, "zX", 2) == 0 || my_strncmp(temp, "ZX", 2) == 0 ||
+        my_strncmp(temp, "tX", 2) == 0 || my_strncmp(temp, "tX", 2) == 0)
+        return ((size_t)va_arg(*arg, size_t));
     return ((short int)va_arg(*arg, unsigned int));
 }
 

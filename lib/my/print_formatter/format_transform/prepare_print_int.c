@@ -16,7 +16,6 @@ static void get_print_int_transformations(flag_modifiers_t *modification_flag,
         if (nb >= 0) {
             modification_flag->found_space = false;
             modification_flag->already_printed += 1;
-            modification_flag->space_padding -= 1;
         }
     }
     if (modification_flag->found_space) {
@@ -62,13 +61,14 @@ static void process_print_no_precision(flag_modifiers_t *modification_flag,
             *potential_following_space = modification_flag->space_padding -
                 to_be_printed -
                 modification_flag->already_printed;
-        } else
+        } else {
+            if (modification_flag->plus)
+                my_putchar('+');
             prints_the_following_spaces(modification_flag->space_padding -
                     to_be_printed -
                     modification_flag->already_printed);
+        }
     }
-    if (modification_flag->plus)
-        my_putchar('+');
 }
 
 void process_print_int_precision(flag_modifiers_t *modfication_flag,

@@ -9,6 +9,7 @@
 #include <my_printf.h>
 #include <my_math.h>
 #include <my_str.h>
+#include <stdint.h>
 
 static unsigned long long parse_my_oct(va_list *arg,
         flag_modifiers_t flag_modficater)
@@ -25,6 +26,11 @@ static unsigned long long parse_my_oct(va_list *arg,
         return (va_arg(*arg, unsigned long long));
     if (my_strncmp(temp, "hho", 3) == 0)
         return ((char)va_arg(*arg, unsigned int));
+    if (my_strncmp(temp, "jo", 2) == 0)
+        return ((uintmax_t)va_arg(*arg, uintmax_t));
+    if (my_strncmp(temp, "zo", 2) == 0 || my_strncmp(temp, "Zo", 2) == 0 ||
+        my_strncmp(temp, "to", 2) == 0 || my_strncmp(temp, "to", 2) == 0)
+        return ((size_t)va_arg(*arg, size_t));
     return ((short int)va_arg(*arg, unsigned int));
 }
 

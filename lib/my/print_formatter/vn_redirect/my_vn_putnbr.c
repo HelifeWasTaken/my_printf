@@ -10,26 +10,30 @@
 #include <my_stdio.h>
 #include <my_math.h>
 #include <my_str.h>
+#include <stdint.h>
+#include <sys/types.h>
 
 static long long parse_my_int(va_list *arg, flag_modifiers_t modification_flag)
 {
     char *temp = modification_flag.last_flag;
 
-    if (my_strncmp(temp, "d", my_strlen(temp)) == 0 ||
-            my_strncmp(temp, "i", my_strlen(temp)) == 0)
+    if (my_strncmp(temp, "d", 1) == 0 || my_strncmp(temp, "i", 1) == 0)
         return ((int)va_arg(*arg, int));
-    if (my_strncmp(temp, "ld", my_strlen(temp)) == 0 ||
-            my_strncmp(temp, "li", my_strlen(temp)) == 0)
+    if (my_strncmp(temp, "ld", 2) == 0 || my_strncmp(temp, "li", 2) == 0)
         return ((long)va_arg(*arg, long));
-    if (my_strncmp(temp, "lld", my_strlen(temp)) == 0 ||
-            my_strncmp(temp, "lli", my_strlen(temp)) == 0)
+    if (my_strncmp(temp, "lld", 3) == 0 || my_strncmp(temp, "lli", 3) == 0)
         return ((long long)va_arg(*arg, long long));
-    if (my_strncmp(temp, "hd", my_strlen(temp)) == 0 ||
-            my_strncmp(temp, "hi", my_strlen(temp)) == 0)
+    if (my_strncmp(temp, "hd", 2) == 0 || my_strncmp(temp, "hi", 2) == 0)
         return ((short int)va_arg(*arg, int));
-    if (my_strncmp(temp, "hhd", my_strlen(temp)) == 0 ||
-            my_strncmp(temp, "hhi", my_strlen(temp)) == 0)
+    if (my_strncmp(temp, "hhd", 3) == 0 || my_strncmp(temp, "hhi", 3) == 0)
         return ((char)va_arg(*arg, int));
+    if (my_strncmp(temp, "zd", 2) == 0 || my_strncmp(temp, "zi", 2) == 0 ||
+        my_strncmp(temp, "Zd", 2) == 0 || my_strncmp(temp, "Zi", 2) == 0)
+        return ((ssize_t)va_arg(*arg, ssize_t));
+    if (my_strncmp(temp, "jd", 2) == 0 || my_strncmp(temp, "ji", 2) == 0)
+        return ((intmax_t)va_arg(*arg, intmax_t));
+    if (my_strncmp(temp, "td", 2) == 0 || my_strncmp(temp, "ti", 2) == 0)
+        return ((ptrdiff_t)va_arg(*arg, ptrdiff_t));
     return ((long long)va_arg(*arg, long long));
 }
 

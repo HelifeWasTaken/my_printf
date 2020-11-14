@@ -10,23 +10,29 @@
 #include <my_stdio.h>
 #include <my_math.h>
 #include <my_str.h>
+#include <stdint.h>
 
 static long long parse_my_unsigned_int(va_list *arg,
         flag_modifiers_t modification_flag)
 {
     char *temp = modification_flag.last_flag;
 
-    if (my_strncmp(temp, "u", my_strlen(temp)) == 0)
-        return ((unsigned int)va_arg(*arg, unsigned int));
-    if (my_strncmp(temp, "lu", my_strlen(temp)) == 0)
-        return ((unsigned long)va_arg(*arg, unsigned long));
-    if (my_strncmp(temp, "llu", my_strlen(temp)) == 0)
-        return ((unsigned long long)va_arg(*arg, unsigned long long));
-    if (my_strncmp(temp, "hu", my_strlen(temp)) == 0)
-        return ((short int)va_arg(*arg, unsigned int));
-    if (my_strncmp(temp, "hhu", my_strlen(temp)) == 0)
+    if (my_strncmp(temp, "u", 1) == 0)
+        return (va_arg(*arg, unsigned int));
+    if (my_strncmp(temp, "lu", 2) == 0)
+        return (va_arg(*arg, unsigned long long));
+    if (my_strncmp(temp, "llu", 3) == 0)
+        return (va_arg(*arg, unsigned long long));
+    if (my_strncmp(temp, "qu", 2) == 0)
+        return (va_arg(*arg, unsigned long long));
+    if (my_strncmp(temp, "hhu", 3) == 0)
         return ((char)va_arg(*arg, unsigned int));
-    return ((unsigned long long)va_arg(*arg, unsigned long long));
+    if (my_strncmp(temp, "ju", 2) == 0)
+        return ((uintmax_t)va_arg(*arg, uintmax_t));
+    if (my_strncmp(temp, "zu", 2) == 0 || my_strncmp(temp, "Zu", 2) == 0 ||
+        my_strncmp(temp, "tu", 2) == 0 || my_strncmp(temp, "tu", 2) == 0)
+        return ((size_t)va_arg(*arg, size_t));
+    return ((short int)va_arg(*arg, unsigned int));
 }
 
 int my_vn_putnbr_unsigned(va_list *arg, flag_modifiers_t modification_flag)

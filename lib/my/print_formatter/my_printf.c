@@ -48,7 +48,7 @@ static bool check_my_printf_basic_errors(char const *str, va_list *arg)
 **
 */
 
-static int my_printf_loop(char const *str, va_list *arg)
+int my_vprintf(char const *str, va_list *arg)
 {
     int count = 0;
 
@@ -57,7 +57,7 @@ static int my_printf_loop(char const *str, va_list *arg)
             str++;
             count += my_printf_parser(&str, arg, count);
         } else if (*str == '%' && str[1] == '%') {
-            my_putstr("%");
+            my_putchar('%');
             str += 2;
             count += 2;
         } else {
@@ -81,5 +81,5 @@ int my_printf(char const *str, ...)
 
     if (!check_my_printf_basic_errors(str, &arg))
         return (-1);
-    return (my_printf_loop(str, &arg));
+    return (my_vprintf(str, &arg));
 }
