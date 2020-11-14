@@ -33,7 +33,7 @@
 **
 */
 
-static const my_printf_flags_t array_flags[71] = {
+static const my_printf_flags_t array_flags[75] = {
     { "d", &my_vn_putnbr },
     { "i", &my_vn_putnbr },
     { "c", &my_vn_putchar },
@@ -58,24 +58,28 @@ static const my_printf_flags_t array_flags[71] = {
     { "lX", &my_vn_puthex_upper },
     { "lld", &my_vn_putnbr },
     { "lli", &my_vn_putnbr },
+    { "lls", &my_vn_putstr },
     { "llo", &my_vn_putoctal },
     { "llu", &my_vn_putnbr_unsigned },
     { "llx", &my_vn_puthex_lower },
     { "llX", &my_vn_puthex_upper },
     { "qd", &my_vn_putnbr },
     { "qi", &my_vn_putnbr },
+    { "qs", &my_vn_putstr },
     { "qo", &my_vn_putoctal },
     { "qu", &my_vn_putnbr_unsigned },
     { "qx", &my_vn_puthex_lower },
     { "qX", &my_vn_puthex_upper },
     { "hhd", &my_vn_putnbr },
     { "hhi", &my_vn_putnbr },
+    { "hhs", &my_vn_putstr },
     { "hho", &my_vn_putoctal },
     { "hhu", &my_vn_putnbr_unsigned },
     { "hhx", &my_vn_puthex_lower },
     { "hhX", &my_vn_puthex_upper },
     { "hd", &my_vn_putnbr },
     { "hi", &my_vn_putnbr },
+    { "hs", &my_vn_putstr },
     { "ho", &my_vn_putoctal },
     { "hu", &my_vn_putnbr_unsigned },
     { "hx", &my_vn_puthex_lower },

@@ -13,7 +13,7 @@
 
 int my_vn_putchar(va_list *arg, flag_modifiers_t modification_flag)
 {
-    wint_t new_data = va_arg(*arg, wint_t);
+    wchar_t new_data = va_arg(*arg, wchar_t);
     int potential_following_spaces = 0;
 
     prepare_print_str(&modification_flag, 1, &potential_following_spaces);
@@ -21,7 +21,7 @@ int my_vn_putchar(va_list *arg, flag_modifiers_t modification_flag)
         write(1, (unsigned char *)&new_data, 1);
         prints_the_following_spaces(potential_following_spaces);
     } else {
-        write(1, &new_data, 1);
+        write(1, &new_data, sizeof(wchar_t));
         prints_the_following_spaces(potential_following_spaces);
     }
     return (1 + potential_following_spaces + modification_flag.already_printed);
