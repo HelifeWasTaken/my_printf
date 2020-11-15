@@ -49,8 +49,7 @@ print_precision_with_bigger_padding(flag_modifiers_t *modification_flag,
 }
 
 static void process_print_no_precision(flag_modifiers_t *modification_flag,
-        int to_be_printed,
-        int *potential_following_space)
+        int to_be_printed, int *potential_following_space)
 {
     print_precision_with_bigger_padding(modification_flag, to_be_printed);
     if (modification_flag->space_padding - to_be_printed -
@@ -83,8 +82,7 @@ void process_print_unsigned_int_precision(flag_modifiers_t *modfication_flag,
 }
 
 void prepare_print_unsigned_int(flag_modifiers_t *modification_flag,
-        int to_be_printed,
-        int *potential_following_space)
+        int to_be_printed, int *potential_following_space)
 {
     if (modification_flag->precision < to_be_printed &&
             modification_flag->space_padding < to_be_printed) {

@@ -29,7 +29,7 @@ static unsigned long long parse_my_oct(va_list *arg,
     if (my_strncmp(temp, "jo", 2) == 0)
         return ((uintmax_t)va_arg(*arg, uintmax_t));
     if (my_strncmp(temp, "zo", 2) == 0 || my_strncmp(temp, "Zo", 2) == 0 ||
-        my_strncmp(temp, "to", 2) == 0 || my_strncmp(temp, "to", 2) == 0)
+            my_strncmp(temp, "to", 2) == 0 || my_strncmp(temp, "to", 2) == 0)
         return ((size_t)va_arg(*arg, size_t));
     return ((short int)va_arg(*arg, unsigned int));
 }

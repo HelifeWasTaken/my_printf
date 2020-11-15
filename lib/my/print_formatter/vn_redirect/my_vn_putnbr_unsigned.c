@@ -30,7 +30,7 @@ static long long parse_my_unsigned_int(va_list *arg,
     if (my_strncmp(temp, "ju", 2) == 0)
         return ((uintmax_t)va_arg(*arg, uintmax_t));
     if (my_strncmp(temp, "zu", 2) == 0 || my_strncmp(temp, "Zu", 2) == 0 ||
-        my_strncmp(temp, "tu", 2) == 0 || my_strncmp(temp, "tu", 2) == 0)
+            my_strncmp(temp, "tu", 2) == 0 || my_strncmp(temp, "tu", 2) == 0)
         return ((size_t)va_arg(*arg, size_t));
     return ((short int)va_arg(*arg, unsigned int));
 }

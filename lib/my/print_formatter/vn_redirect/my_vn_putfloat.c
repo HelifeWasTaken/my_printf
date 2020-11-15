@@ -15,7 +15,7 @@ int my_vn_putfloat(va_list *arg, flag_modifiers_t flag_modificater)
     double new_data = va_arg(*arg, double);
 
     if (flag_modificater.default_precision ||
-        !(flag_modificater.found_precision)) {
+            !(flag_modificater.found_precision)) {
         my_putfloat((float)new_data, 6);
         return (7 + get_nb_size((long long)new_data, 10));
     } else {

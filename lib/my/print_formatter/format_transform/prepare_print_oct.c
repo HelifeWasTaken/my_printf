@@ -10,8 +10,7 @@
 #include <my_all.h>
 
 static void get_first_octal_info(flag_modifiers_t *modification_flag,
-        int to_be_printed,
-        int *potential_following_spaces,
+        int to_be_printed, int *potential_following_spaces,
         int *real_space_padding)
 {
     if (modification_flag->precision < to_be_printed &&

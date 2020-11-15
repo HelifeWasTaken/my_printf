@@ -28,7 +28,7 @@ static long long parse_my_int(va_list *arg, flag_modifiers_t modification_flag)
     if (my_strncmp(temp, "hhd", 3) == 0 || my_strncmp(temp, "hhi", 3) == 0)
         return ((char)va_arg(*arg, int));
     if (my_strncmp(temp, "zd", 2) == 0 || my_strncmp(temp, "zi", 2) == 0 ||
-        my_strncmp(temp, "Zd", 2) == 0 || my_strncmp(temp, "Zi", 2) == 0)
+            my_strncmp(temp, "Zd", 2) == 0 || my_strncmp(temp, "Zi", 2) == 0)
         return ((ssize_t)va_arg(*arg, ssize_t));
     if (my_strncmp(temp, "jd", 2) == 0 || my_strncmp(temp, "ji", 2) == 0)
         return ((intmax_t)va_arg(*arg, intmax_t));
