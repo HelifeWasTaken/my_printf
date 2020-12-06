@@ -16,9 +16,9 @@ long long parse_typeu(va_list *ap, struct flag_modifiers *modif)
         case LPRINTF_MOD_SHORT:
             return ((unsigned short int)va_arg(*ap, unsigned int));
         case LPRINTF_MOD_LONG:
-            return ((unsigned long long)va_arg(*ap, unsigned int));
+            return ((unsigned long)va_arg(*ap, unsigned long));
         case LPRINTF_MOD_LONG_LONG:
-            return ((unsigned long long)va_arg(*ap, unsigned int));
+            return ((unsigned long long)va_arg(*ap, unsigned long long));
         case LPRINTF_MOD_INT_MAX:
             return ((intmax_t)va_arg(*ap, intmax_t));
         case LPRINTF_MOD_SIZE_T:
@@ -38,9 +38,9 @@ long long parse_type(va_list *ap, struct flag_modifiers *modif)
         case LPRINTF_MOD_SHORT:
             return ((short int)va_arg(*ap, int));
         case LPRINTF_MOD_LONG:
-            return ((long long)va_arg(*ap, int));
+            return ((long)va_arg(*ap, long));
         case LPRINTF_MOD_LONG_LONG:
-            return ((long long)va_arg(*ap, int));
+            return ((long long)va_arg(*ap, long long));
         case LPRINTF_MOD_INT_MAX:
             return ((intmax_t)va_arg(*ap, intmax_t));
         case LPRINTF_MOD_SIZE_T:
