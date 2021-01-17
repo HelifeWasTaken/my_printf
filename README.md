@@ -1,5 +1,9 @@
 # my_printf
 
+## Deprecated
+
+This printf is old was not optimised enough a better one (and documented) can be found on : `https://github.com/Heliferepo/LibErty`
+
 ## Unix System Programming
 
 The goal of this project was to recreate printf in accordance to the C99 standard in two weeks
